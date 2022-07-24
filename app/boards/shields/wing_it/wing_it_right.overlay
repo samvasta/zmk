@@ -20,4 +20,4 @@
 			, <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>	// Schematic Col 1
 			, <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>	// Schematic Col 0
 			;
-}
+};
