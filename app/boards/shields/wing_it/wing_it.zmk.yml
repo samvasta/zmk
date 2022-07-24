@@ -1,0 +1,12 @@
+file_format: "1"
+id: wing_it
+name: wing_it
+type: shield
+url: https://github.com/samvasta/wing-it-wireless-zmk
+requires: [pro_micro]
+features:
+  - keys
+  - underglow
+siblings:
+  - wing_it_left
+  - wing_it_right
