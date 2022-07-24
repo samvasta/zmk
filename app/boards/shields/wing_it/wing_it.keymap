@@ -1,79 +1,65 @@
-/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
-
-#define NONE      0
-#define L1_A      1
-#define L2_B      2
-#define L4_C      4
-#define L8_D      8
 
 / {
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        // NONE (0, 0000) is non-conditional
-        // A (1, 1000) is non-conditional
-        // B (2, 0100) is non-conditional
-        AB {     // 1100
-            if-layers = <L1_A L2_B>;
-            then-layer = <3>;
-        };
-        // C (4, 0010) is non-conditional
-        AC {    // 1010
-            if-layers = <L1_A L3_C>;
-            then-layer = <5>;
-        };
-        BC {    // 0110
-            if-layers = <L2_B L3_C>;
-            then-layer = <6>;
-        };
-        ABC {   // 1110
-            if-layers = <L1_A L2_B L3_C>;
-            then-layer = <7>;
-        };
-        // D (8, 0001) is non-conditional
-        AD {    // 1001
-            if-layers = <L1_A L4_D>;
-            then-layer = <9>;
-        };
-        BD {    // 0101
-            if-layers = <L2_B L4_D>;
-            then-layer = <10>;
-        };
-        ABD {   // 1101
-            if-layers = <L1_A L2_B L4_D>;
-            then-layer = <11>;
-        };
-        CD {    // 0011
-            if-layers = <L3_C L4_D>;
-            then-layer = <12>;
-        };
-        ACD {   // 1011
-            if-layers = <L1_A L3_C L4_D>;
-            then-layer = <13>;
-        };
-        BCD {   // 0111
-            if-layers = <L2_B L3_C L4_D>;
-            then-layer = <14>;
-        };
-        ABCD {  // 1111
-            if-layers = <L1_A L2_B L3_C L4_D>;
-            then-layer = <15>;
-        };
-    };
-};
+    // conditional_layers {
+    //     compatible = "zmk,conditional-layers";
+    //     // NONE (0, 0000) is non-conditional
+    //     // A (1, 1000) is non-conditional
+    //     // B (2, 0100) is non-conditional
+    //     ab {     // 1100
+    //         if-layers = <1 2>;
+    //         then-layer = <3>;
+    //     };
+    //     // C (4, 0010) is non-conditional
+    //     ac {    // 1010
+    //         if-layers = <1 4>;
+    //         then-layer = <5>;
+    //     };
+    //     bc {    // 0110
+    //         if-layers = <2 4>;
+    //         then-layer = <6>;
+    //     };
+    //     abc {   // 1110
+    //         if-layers = <1 2 4>;
+    //         then-layer = <7>;
+    //     };
+    //     // D (8, 0001) is non-conditional
+    //     ad {    // 1001
+    //         if-layers = <1 8>;
+    //         then-layer = <9>;
+    //     };
+    //     bd {    // 0101
+    //         if-layers = <2 8>;
+    //         then-layer = <10>;
+    //     };
+    //     abd {   // 1101
+    //         if-layers = <1 2 8>;
+    //         then-layer = <11>;
+    //     };
+    //     cd {    // 0011
+    //         if-layers = <4 8>;
+    //         then-layer = <12>;
+    //     };
+    //     acd {   // 1011
+    //         if-layers = <1 4 8>;
+    //         then-layer = <13>;
+    //     };
+    //     bcd {   // 0111
+    //         if-layers = <2 4 8>;
+    //         then-layer = <14>;
+    //     };
+    //     abcd {  // 1111
+    //         if-layers = <1 2 4 8>;
+    //         then-layer = <15>;
+    //     };
+    // };
 
-/ {
-        keymap {
-                compatible = "zmk,keymap";
+	keymap {
+		compatible = "zmk,keymap";
 
-                default_layer {
+        default_layer {
 /* QWERTY
  * .-------------------------------------------.                                                   .-------------------------------------------.
  * |  ESC  |   Q   |   W  |   E  |   R  |   T  |                                                   |   Y   |   U  |   I  |   O  |   P  | Bkspc |
@@ -86,13 +72,14 @@
  * .-------------------------------------------------------------                --------------------------------------------------------------.
  */
                         bindings = <
-&kp  ESC      &kp  Q        &kp  W        &kp  E        &kp  R        &kp  T                                              &kp  Y        &kp  U        &kp  I        &kp  O        &kp  P        &kp  BKSPC
+&kp  ESC      &kp  Q        &kp  W        &kp  E        &kp  R        &kp  T                                              &kp  Y        &kp  U        &kp  I        &kp  O        &kp  P        &kp  BSPC
 &kp  TAB      &kp  A        &kp  S        &kp  D        &kp  F        &kp  G                                              &kp  H        &kp  J        &kp  K        &kp  L        &kp  SEMI     &kp  ENTER
-&kp  LSHFT    &kp  Z        &kp  X        &kp  C        &kp  V        &kp  B        &mo  L4_C                 &mo  L8_D   &kp  N        &kp  M        &kp  COMMA    &kp  DOT      &kp  SL1_ASH  &kp  RSHFT
-&kp  LCTRL    & LMETA       &kp  LALT     &mo  L8_D     &mo  L2_B     &kp  SPACE    &mo  L1_A                 &mo  L2_B   &kp  SPACE    &mo L1_A      &mo L4_C      &kp  RALT     &kp  RMETA    &kp  RCTRL
-                        >;
-                };
-                1000 {  // 1
+&kp  LSHFT    &kp  Z        &kp  X        &kp  C        &kp  V        &kp  B        &mo  4                    &mo  8      &kp  N        &kp  M        &kp  COMMA    &kp  DOT      &kp  SLASH    &kp  RSHFT
+&kp  LCTRL    &kp  LMETA    &kp  LALT     &mo  8        &mo  2        &kp  SPACE    &mo  1                    &mo  2      &kp  SPACE    &mo  1        &mo  4        &kp  RALT     &kp  RMETA    &kp  RCTRL
+            >;
+        };
+
+        a {  // 1
 /* Text Editing / Navigation
  * .--------------------------------------------                                    --------------------------------------------.
  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
@@ -109,274 +96,287 @@
 &trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
 &trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
 &trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-                        >;
-                };
-                0100 {  // 2
-/* Symbols
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-                        >;
-                };
-                1100 {  // 3
-/* Symbols
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-                        >;
-                };
-                0010 {  // 4
-/* Symbols
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-                        >;
-                };
-                1010 {  // 5
-/* Symbols
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-                        >;
-                };
-                0110 {  // 6
-/* Symbols
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-                        >;
-                };
-                1110 {  // 7
-/* Symbols
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-                        >;
-                };
-                0001 {  // 8
-/* Symbols
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-                        >;
-                };
-                1001 {  // 9
-/* Symbols
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-                        >;
-                };
-                0101 {  // 10
-/* Symbols
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-                        >;
-                };
-                1101 {  // 11
-/* Symbols
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-                        >;
-                };
-                0011 {  // 12
-/* Symbols
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-                        >;
-                };
-                1011 {  // 13
-/* Symbols
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-                        >;
-                };
-                0101 {  // 14
-/* Symbols
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-                        >;
-                };
-                1111 {  // 15
-/* Symbols
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-                        >;
-                };
+            >;
         };
-};
 
+        b {  // 2
+/* Symbols
+ * .--------------------------------------------                                    --------------------------------------------.
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+ * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+ * .----------------------------------------------------------        ----------------------------------------------------------.
+ */
+                        bindings = <
+&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+            >;
+        };
+
+        ab {  // 3
+/* Symbols
+ * .--------------------------------------------                                    --------------------------------------------.
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+ * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+ * .----------------------------------------------------------        ----------------------------------------------------------.
+ */
+                        bindings = <
+&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+            >;
+        };
+
+        c {  // 4
+/* Symbols
+ * .--------------------------------------------                                    --------------------------------------------.
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+ * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+ * .----------------------------------------------------------        ----------------------------------------------------------.
+ */
+                        bindings = <
+&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+            >;
+        };
+
+        ac {  // 5
+/* Symbols
+ * .--------------------------------------------                                    --------------------------------------------.
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+ * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+ * .----------------------------------------------------------        ----------------------------------------------------------.
+ */
+                        bindings = <
+&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+            >;
+        };
+
+        bc {  // 6
+/* Symbols
+ * .--------------------------------------------                                    --------------------------------------------.
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+ * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+ * .----------------------------------------------------------        ----------------------------------------------------------.
+ */
+                        bindings = <
+&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+            >;
+        };
+
+        abc {  // 7
+/* Symbols
+ * .--------------------------------------------                                    --------------------------------------------.
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+ * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+ * .----------------------------------------------------------        ----------------------------------------------------------.
+ */
+                        bindings = <
+&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+            >;
+        };
+
+        d {  // 8
+/* Symbols
+ * .--------------------------------------------                                    --------------------------------------------.
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+ * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+ * .----------------------------------------------------------        ----------------------------------------------------------.
+ */
+                        bindings = <
+&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+            >;
+        };
+
+        ad {  // 9
+/* Symbols
+ * .--------------------------------------------                                    --------------------------------------------.
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+ * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+ * .----------------------------------------------------------        ----------------------------------------------------------.
+ */
+                        bindings = <
+&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+            >;
+        };
+
+        bd {  // 10
+/* Symbols
+ * .--------------------------------------------                                    --------------------------------------------.
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+ * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+ * .----------------------------------------------------------        ----------------------------------------------------------.
+ */
+                        bindings = <
+&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+            >;
+        };
+
+        abd {  // 11
+/* Symbols
+ * .--------------------------------------------                                    --------------------------------------------.
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+ * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+ * .----------------------------------------------------------        ----------------------------------------------------------.
+ */
+                        bindings = <
+&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+            >;
+        };
+
+        cd {  // 12
+/* Symbols
+ * .--------------------------------------------                                    --------------------------------------------.
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+ * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+ * .----------------------------------------------------------        ----------------------------------------------------------.
+ */
+                        bindings = <
+&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+            >;
+        };
+
+        acd {  // 13
+/* Symbols
+ * .--------------------------------------------                                    --------------------------------------------.
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+ * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+ * .----------------------------------------------------------        ----------------------------------------------------------.
+ */
+                        bindings = <
+&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+            >;
+        };
+
+        bcd {  // 14
+/* Symbols
+ * .--------------------------------------------                                    --------------------------------------------.
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+ * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+ * .----------------------------------------------------------        ----------------------------------------------------------.
+ */
+                        bindings = <
+&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+            >;
+        };
+
+        abcd {  // 15
+/* Symbols
+ * .--------------------------------------------                                    --------------------------------------------.
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+ * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+ * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+ * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+ * .----------------------------------------------------------        ----------------------------------------------------------.
+ */
+                        bindings = <
+&none     &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+            >;
+        };
+    };
+};
