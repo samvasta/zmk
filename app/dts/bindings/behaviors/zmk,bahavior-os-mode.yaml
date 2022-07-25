@@ -6,8 +6,3 @@ description: OS Mode behavior
 compatible: "zmk,behavior-os-mode"
 
 include: two_param.yaml
-
-properties:
-  bindings:
-    type: phandles
-    required: true
