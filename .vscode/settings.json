@@ -1,9 +1,18 @@
 {
   "files.associations": {
     "*.overlay": "dts",
-    "*.keymap": "dts"
+    "*.keymap": "dts",
+    "led_strip.h": "c",
+    "device.h": "c",
+    "uuid.h": "c",
+    "ble_active_profile_changed.h": "c",
+    "event_manager.h": "c",
+    "behavior.h": "c",
+    "ble.h": "c",
+    "behavior_queue.h": "c"
   },
   "python.formatting.provider": "black",
+  "cmake.sourceDirectory": "${workspaceFolder}/app",
   "[c]": {
     "editor.formatOnSave": true
   },

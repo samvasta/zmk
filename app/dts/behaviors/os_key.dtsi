@@ -4,11 +4,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-/ {
+ / {
 	behaviors {
-		/omit-if-no-ref/ os_mode_toggle: behavior_os_mode {
-			compatible = "zmk,behavior-os-mode";
-			label = "OS_MODE_TOGGLE";
+		os_key_tap: os_key_tap {
+			compatible = "zmk,os-key-tap";
+			label = "OSK_TAP";
 			#binding-cells = <0>;
 		};
 	};
