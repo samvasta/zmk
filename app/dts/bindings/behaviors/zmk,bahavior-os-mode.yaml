@@ -5,4 +5,4 @@ description: OS Mode behavior
 
 compatible: "zmk,behavior-os-mode"
 
-include: two_param.yaml
+include: zero_param.yaml

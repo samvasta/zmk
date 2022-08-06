@@ -1,0 +1,18 @@
+# Copyright (c) 2022 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+description: OS Key behavior
+
+compatible: "zmk,behavior-os-key-tap"
+
+include: zero_param.yaml
+
+# properties:
+#   "#winlin_binding-cells":
+#     type: int
+#     required: true
+#     const: 0
+#   "#osx_binding-cells":
+#     type: int
+#     required: true
+#     const: 0

@@ -1,0 +1,13 @@
+# Copyright (c) 2022 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+description: OS Key behavior
+
+compatible: "zmk,behavior-os-key"
+
+include: two_param.yaml
+
+properties:
+  bindings:
+    type: phandles
+    required: true
