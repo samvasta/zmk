@@ -192,7 +192,7 @@
         };
     };
 
-    os_keys {
+    // os_keys {
         // mod1: mod1 {
         //     label = "control";
         //     compatible = "zmk,behavior-os-key";
@@ -217,41 +217,41 @@
         // };
 
 
-        undo: undo {
-            label = "undo";
-            compatible = "zmk,behavior-os-key";
-            #binding-cells = <2>;
-            bindings = <&undo_winlin>, <&undo_osx>;
-        };
+        // undo: undo {
+        //     label = "undo";
+        //     compatible = "zmk,behavior-os-key";
+        //     #binding-cells = <2>;
+        //     bindings = <&undo_winlin>, <&undo_osx>;
+        // };
 
-        redo: redo {
-            label = "redo";
-            compatible = "zmk,behavior-os-key";
-            #binding-cells = <2>;
-            bindings = <&redo_winlin>, <&redo_osx>;
-        };
+        // redo: redo {
+        //     label = "redo";
+        //     compatible = "zmk,behavior-os-key";
+        //     #binding-cells = <2>;
+        //     bindings = <&redo_winlin>, <&redo_osx>;
+        // };
 
-        cut: cut {
-            label = "cut";
-            compatible = "zmk,behavior-os-key";
-            #binding-cells = <2>;
-            bindings = <&cut_winlin>, <&cut_osx>;
-        };
+        // cut: cut {
+        //     label = "cut";
+        //     compatible = "zmk,behavior-os-key";
+        //     #binding-cells = <2>;
+        //     bindings = <&cut_winlin>, <&cut_osx>;
+        // };
 
-        copy: copy {
-            label = "copy";
-            compatible = "zmk,behavior-os-key";
-            #binding-cells = <2>;
-            bindings = <&copy_winlin>, <&copy_osx>;
-        };
+        // copy: copy {
+        //     label = "copy";
+        //     compatible = "zmk,behavior-os-key";
+        //     #binding-cells = <2>;
+        //     bindings = <&copy_winlin>, <&copy_osx>;
+        // };
 
-        paste: paste {
-            label = "paste";
-            compatible = "zmk,behavior-os-key";
-            #binding-cells = <2>;
-            bindings = <&paste_winlin>, <&paste_osx>;
-        };
-    };
+        // paste: paste {
+        //     label = "paste";
+        //     compatible = "zmk,behavior-os-key";
+        //     #binding-cells = <2>;
+        //     bindings = <&paste_winlin>, <&paste_osx>;
+        // };
+    // };
 
 	keymap {
 		compatible = "zmk,keymap";
@@ -274,7 +274,7 @@
 &kp  ESC   &kp  Q          &kp  W          &kp  E   &kp  R   &kp  T                                              &kp  Y        &kp  U   &kp  I        &kp  O          &kp  P          &kp  BSPC
 &kp  TAB   &kp  A          &kp  S          &kp  D   &kp  F   &kp  G                                              &kp  H        &kp  J   &kp  K        &kp  L          &kp  SEMI       &kp  ENTER
 &kp  LSHFT &kp  Z          &kp  X          &kp  C   &kp  V   &kp  B        &mo  4                    &mo  8      &kp  N        &kp  M   &kp  COMMA    &kp  DOT        &kp  SLASH      &kp  RSHFT
-&kp  LCTRL &osk LWIN LALT  &osk LALT LCMD  &mo  8   &mo  2   &kp  SPACE    &mo  1                    &mo  2      &kp  SPACE    &mo  1   &mo  4        &osk RALT RCMD  &osk RWIN RALT  &kp  LCTRL
+&kp  LCTRL &kp LALT        &kp LCMD        &mo  8   &mo  2   &kp  SPACE    &mo  1                    &mo  2      &kp  SPACE    &mo  1   &mo  4        &kp RCMD        &kp RALT        &kp  LCTRL
             >;
         };
 
@@ -292,9 +292,9 @@
 	└────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
  */
                         bindings = <
-&kp GRAVE &shiftgrave  &undo        &redo        &kp HOME     &kp PG_UP                                     &kp K        &kp BSPC     &kp UP       &kp DEL      &kp INS     &kp PSCRN
-&trans    &shifttab    &kp LCTRL    &kp LALT     &kp END      &kp PG_DN                                     &kp J        &kp LEFT     &kp DOWN     &kp RIGHT    &none       &trans
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &cut         &copy        &paste       &none       &trans
+&kp GRAVE &shiftgrave  &undo_osx    &redo_osx    &kp HOME     &kp PG_UP                                     &kp K        &kp BSPC     &kp UP       &kp DEL      &kp INS     &kp PSCRN
+&trans    &shifttab    &kp LALT     &kp LCMD     &kp END      &kp PG_DN                                     &kp J        &kp LEFT     &kp DOWN     &kp RIGHT    &none       &trans
+&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &cut_osx     &copy_osx    &paste_osx   &none       &trans
 &trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
             >;
         };
@@ -357,8 +357,8 @@
 
  */
                         bindings = <
-&trans    &kp F13   &kp F14    &kp F15   &kp F16   &none                                         &kp KP_N0    &kp KP_N1    &kp KP_N2    &kp KP_N3    &kp KP_N4   &kp KP_N5
-&trans    &kp F17   &kp F18    &kp F19   &kp F20   &none                                         &kp X        &kp KP_N6    &kp KP_N7    &kp KP_N8    &kp KP_N9   &kp A
+&trans    &kp F13   &kp F14    &kp F15   &kp F16   &none                                         &kp N0       &kp N1       &kp N2       &kp N3       &kp N4      &kp N5
+&trans    &kp F17   &kp F18    &kp F19   &kp F20   &none                                         &kp X        &kp N6       &kp N7       &kp N8       &kp N9      &kp A
 &trans    &kp F21   &kp F22    &kp F23   &kp F24   &none     &trans                 &trans       &kp POUND    &kp B        &kp C        &kp D        &kp E       &kp F
 &trans    &trans    &trans     &trans    &trans    &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
             >;
@@ -510,7 +510,7 @@
  * .-----------------------------------------------                                    -----------------------------------------------.
  * | BT Clear |       |      |      |      |      |                                    |  BT 1 | BT 2 | BT 3 | BT 4 | BT 5 |          |
  * |----------+-------+------+------+------+------+                                    +-------+------+------+------+------+----------|
- * |          |       |      |TGL OS|  d    |      |                                    |       |      |      |      |      |          |
+ * |          |       |      |TGL OS|      |      |                                    |       |      |      |      |      |          |
  * |----------+-------+------+------+------+------+                                    +-------+------+------+------+------+----------|
  * |          |       |      |      | BT PREV | BT NEXT |                              |       |      |      |      |      |          |
  * |----------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+----------|
