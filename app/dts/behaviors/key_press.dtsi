@@ -10,8 +10,8 @@
         /omit-if-no-ref/ cp: kp: key_press {
             compatible = "zmk,behavior-key-press";
             #binding-cells = <1>;
-			#winlin_binding-cells = <0>;
-			#osx_binding-cells = <0>;
+			      #winlin_binding-cells = <0>;
+			      #osx_binding-cells = <0>;
         };
     };
 };

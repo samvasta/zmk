@@ -6,10 +6,11 @@
 
  / {
 	behaviors {
-		os_key_tap: os_key_tap {
-			compatible = "zmk,os-key-tap";
-			label = "OSK_TAP";
-			#binding-cells = <0>;
+		/omit-if-no-ref/ osk: osk {
+			compatible = "zmk,behavior-os-key";
+			label = "OS_KEY";
+			#binding-cells = <2>;
+			bindings = <&kp>, <&kp>;
 		};
 	};
 };

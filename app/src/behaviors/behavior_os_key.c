@@ -66,8 +66,12 @@ static const struct behavior_driver_api behavior_os_mode_driver_api = {
 
 
 #define OS_KEY_INST(n)                                                                             \
-    static struct behavior_os_key_config behavior_os_key_config_##n = {                             \
-        .binding = ZMK_KEYMAP_EXTRACT_BINDING(idx, DT_DRV_INST(n))}                                \
+    static struct behavior_os_key_config behavior_os_key_config_##n = {                            \
+        .winlin_binding = ZMK_KEYMAP_EXTRACT_BINDING(0, DT_DRV_INST(n)),                           \
+        .osx_binding = ZMK_KEYMAP_EXTRACT_BINDING(1, DT_DRV_INST(n)),                              \
+    }                                                                                              \
+    ;                                                                                              \
+                                                                                                   \
     DEVICE_DT_INST_DEFINE(n, os_mode_init, NULL, NULL, &behavior_os_key_config_##n,                \
                           APPLICATION,                                                             \
                           CONFIG_KERNEL_INIT_PRIORITY_DEFAULT, &behavior_os_mode_driver_api);
