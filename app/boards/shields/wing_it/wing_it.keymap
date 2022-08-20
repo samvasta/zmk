@@ -56,6 +56,14 @@
             if-layers = <1 2 4 8>;
             then-layer = <15>;
         };
+        win_lin_a_default_behavior {
+            if-layers = <1>;
+            then-layer = <1>;
+        };
+        win_lin_a {
+            if-layers = <1 16>;
+            then-layer = <17>;
+        };
     };
 
     macros {
@@ -284,7 +292,7 @@
 	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
 	│    `   │ SHFT+` │  UNDO  │  REDO  │  HOME  │ PG.UP  │                                                    │    K   │ BKSPC  │   UP   │  DEL   │ INSERT │ PRTSCR │
 	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-	│        │SHFT+TAB│ L CTL  │ L ALT  │   END  │ PG.DN  │                                                    │    J   │ LEFT   │  DOWN  │  RIGHT │ XXXXXX │        │
+	│        │SHFT+TAB│ L OPT  │ L CMD  │   END  │ PG.DN  │                                                    │    J   │ LEFT   │  DOWN  │  RIGHT │ XXXXXX │        │
 	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
 	│        │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │ CUT    │  COPY  │ PASTE  │ XXXXXX │        │
 	├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
@@ -292,7 +300,7 @@
 	└────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
  */
                         bindings = <
-&kp GRAVE &shiftgrave  &undo_osx    &redo_osx    &kp HOME     &kp PG_UP                                     &kp K        &kp BSPC     &kp UP       &kp DEL      &kp INS     &kp PSCRN
+&kp ESC   &shiftgrave  &undo_osx    &redo_osx    &kp HOME     &kp PG_UP                                     &kp K        &kp BSPC     &kp UP       &kp DEL      &kp INS     &kp PSCRN
 &trans    &shifttab    &kp LALT     &kp LCMD     &kp END      &kp PG_DN                                     &kp J        &kp LEFT     &kp DOWN     &kp RIGHT    &none       &trans
 &trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &cut_osx     &copy_osx    &paste_osx   &none       &trans
 &trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
@@ -335,9 +343,9 @@
 
  */
                         bindings = <
-&trans    &none        &none        &none        &none        &none                                         &none        &kp F1       &kp F2       &kp F3       &kp F4      &kp F5
-&trans    &none        &none        &none        &none        &none                                         &none        &kp F6       &kp F7       &kp F8       &kp F9      &kp F10
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &kp F11      &kp F12      &kp F13      &kp F14     &kp F15
+&trans    &none        &none        &none        &none        &none                                         &none        &kp F1       &kp F2       &kp F3       &kp F4      &none
+&trans    &none        &none        &none        &none        &none                                         &none        &kp F5       &kp F6       &kp F7       &kp F8      &none
+&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &kp F9       &kp F10      &kp F11      &kp F12     &none
 &trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
             >;
         };
@@ -519,7 +527,7 @@
  */
                         bindings = <
 &bt BT_CLR &none        &none        &none           &none        &none                                         &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none
-&trans     &none        &none        &os_mode_toggle &none        &none                                         &none        &none        &none        &none        &none        &none
+&trans     &none        &none        &tog 16         &none        &none                                         &none        &none        &none        &none        &none        &none
 &trans     &none        &none        &none           &bt BT_PRV   &bt BT_NXT  &trans                 &trans     &none        &none        &none        &none        &none        &none
 &trans     &trans       &trans       &trans          &trans       &trans      &trans                 &trans     &trans       &trans       &trans       &trans       &trans       &trans
             >;
@@ -582,6 +590,50 @@
 &trans      &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
 &trans      &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
 &trans      &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+            >;
+        };
+
+        win_lin_mods {  // 16
+/* QWERTY
+    Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
+	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
+	│        │        │        │        │        │        │                                                    │        │        │        │        │        │        │
+	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+	│        │        │        │        │        │        |                                                    │        │        │        │        │        │        │
+	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+	│        │        │        │        │        │        │                                                    │        │        │        │        │        │        │
+	├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
+	│        │  GUI   │  ALT   │        │        │        │  │        ││        │        │        ││        │  │        │        │        │  ALT   │  GUI   │        │
+	└────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
+
+ */
+                        bindings = <
+&trans   &trans   &trans    &trans   &trans   &trans                                          &trans   &trans   &trans   &trans   &trans   &trans
+&trans   &trans   &trans    &trans   &trans   &trans                                          &trans   &trans   &trans   &trans   &trans   &trans
+&trans   &trans   &trans    &trans   &trans   &trans    &trans                    &trans      &trans   &trans   &trans   &trans   &trans   &trans
+&trans   &kp LGUI &kp LALT  &trans   &trans   &trans    &trans                    &trans      &trans   &trans   &trans   &kp RALT &kp RGUI &trans
+            >;
+        };
+
+        a_win_lin_mods {    // 17
+/* QWERTY
+    Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
+	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
+	│        │        │        │        │        │        │                                                    │        │        │        │        │        │        │
+	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+	│        │        │ L CTL  │  L ALT │        │        |                                                    │        │        │        │        │        │        │
+	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+	│        │        │        │        │        │        │                                                    │        │        │        │        │        │        │
+	├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
+	│        │        │        │        │        │        │  │        ││        │        │        ││        │  │        │        │        │        │        │        │
+	└────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
+
+ */
+                        bindings = <
+&trans   &trans   &undo_winlin &redo_winlin  &trans   &trans                                          &trans   &trans      &trans       &trans        &trans   &trans
+&trans   &trans   &kp LCTL     &kp LALT      &trans   &trans                                          &trans   &trans      &trans       &trans        &trans   &trans
+&trans   &trans   &trans       &trans        &trans   &trans    &trans                    &trans      &trans   &cut_winlin &copy_winlin &paste_winlin &trans   &trans
+&trans   &trans   &trans       &trans        &trans   &trans    &trans                    &trans      &trans   &trans      &trans       &trans        &trans   &trans
             >;
         };
     };
