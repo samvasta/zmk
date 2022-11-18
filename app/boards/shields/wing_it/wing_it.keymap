@@ -11,58 +11,58 @@
         // A (1, 1000) is non-conditional
         // B (2, 0100) is non-conditional
         ab {     // 1100
-            if-layers = <1 2>;
-            then-layer = <3>;
+            if-layers = <2 3>;
+            then-layer = <4>;
         };
         // C (4, 0010) is non-conditional
         ac {    // 1010
-            if-layers = <1 4>;
-            then-layer = <5>;
-        };
-        bc {    // 0110
-            if-layers = <2 4>;
+            if-layers = <2 5>;
             then-layer = <6>;
         };
-        abc {   // 1110
-            if-layers = <1 2 4>;
+        bc {    // 0110
+            if-layers = <3 5>;
             then-layer = <7>;
+        };
+        abc {   // 1110
+            if-layers = <2 3 5>;
+            then-layer = <8>;
         };
         // D (8, 0001) is non-conditional
         ad {    // 1001
-            if-layers = <1 8>;
-            then-layer = <9>;
-        };
-        bd {    // 0101
-            if-layers = <2 8>;
+            if-layers = <2 9>;
             then-layer = <10>;
         };
-        abd {   // 1101
-            if-layers = <1 2 8>;
+        bd {    // 0101
+            if-layers = <3 9>;
             then-layer = <11>;
         };
-        cd {    // 0011
-            if-layers = <4 8>;
+        abd {   // 1101
+            if-layers = <2 3 9>;
             then-layer = <12>;
         };
-        acd {   // 1011
-            if-layers = <1 4 8>;
+        cd {    // 0011
+            if-layers = <5 9>;
             then-layer = <13>;
         };
-        bcd {   // 0111
-            if-layers = <2 4 8>;
+        acd {   // 1011
+            if-layers = <2 5 9>;
             then-layer = <14>;
         };
-        abcd {  // 1111
-            if-layers = <1 2 4 8>;
+        bcd {   // 0111
+            if-layers = <3 5 9>;
             then-layer = <15>;
         };
+        abcd {  // 1111
+            if-layers = <2 3 5 9>;
+            then-layer = <16>;
+        };
         win_lin_a_default_behavior {
-            if-layers = <1>;
-            then-layer = <1>;
+            if-layers = <2>;
+            then-layer = <2>;
         };
         win_lin_a {
-            if-layers = <1 16>;
-            then-layer = <17>;
+            if-layers = <2 17>;
+            then-layer = <18>;
         };
     };
 
@@ -281,12 +281,35 @@
                         bindings = <
 &kp  ESC   &kp  Q          &kp  W          &kp  E   &kp  R   &kp  T                                              &kp  Y        &kp  U   &kp  I        &kp  O          &kp  P          &kp  BSPC
 &kp  TAB   &kp  A          &kp  S          &kp  D   &kp  F   &kp  G                                              &kp  H        &kp  J   &kp  K        &kp  L          &kp  SEMI       &kp  ENTER
-&kp  LSHFT &kp  Z          &kp  X          &kp  C   &kp  V   &kp  B        &mo  4                    &mo  8      &kp  N        &kp  M   &kp  COMMA    &kp  DOT        &kp  SLASH      &kp  RSHFT
-&kp  LCTRL &kp LALT        &kp LCMD        &mo  8   &mo  2   &kp  SPACE    &mo  1                    &mo  2      &kp  SPACE    &mo  1   &mo  4        &kp RCMD        &kp RALT        &kp  LCTRL
+&kp  LSHFT &kp  Z          &kp  X          &kp  C   &kp  V   &kp  B        &mo  5                    &mo  9      &kp  N        &kp  M   &kp  COMMA    &kp  DOT        &kp  SLASH      &kp  RSHFT
+&kp  LCTRL &kp LALT        &kp LCMD        &mo  9   &mo  3   &kp  SPACE    &mo  2                    &mo  3      &kp  SPACE    &mo  2   &mo  5        &kp RCMD        &kp RALT        &kp  LCTRL
             >;
         };
 
-        a {  // 1
+
+        alt_layout {
+/* Carpalx QGMLWY
+    Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
+	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
+	│  ESC   │    Q   │   W    │   E    │   R    │   T    │                                                    │    Y   │   U    │   I    │    O   │   P    │ BKSPC  │
+	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+	│  TAB   │    A   │   S    │   D    │   F    │   G    |                                                    │    H   │   J    │   K    │    L   │   ;    │ ENTER  │
+	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+	│  SHIFT │    Z   │   X    │   C    │   V    │   B    │                                                    │    N   │   M    │   , <  │  . >   │   / ?  │ R SHFT │
+	├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
+	│  CTL   │  GUI   │  ALT   │  FN 8  │  FN 2  │  SPACE │  │  FN 1  ││  FN 4  │        │  FN 8  ││  FN 2  │  │ SPACE  │  FN 1  │  FN 4  │  ALT   │  GUI   │  CTL   │
+	└────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
+
+ */
+                        bindings = <
+&trans   &kp  Q          &kp  G          &kp  M   &kp  L   &kp  W                                              &kp  Y        &kp  F   &kp  U        &kp  B          &kp  SEMI       &trans
+&trans   &kp  D          &kp  S          &kp  T   &kp  N   &kp  R                                              &kp  I        &kp  A   &kp  E        &kp  O          &kp  H          &trans
+&trans   &kp  Z          &kp  X          &kp  C   &kp  V   &kp  J        &trans                    &trans      &kp  K        &kp  P   &kp  COMMA    &kp  DOT        &kp  SLASH      &trans
+&trans   &trans          &trans          &trans   &trans   &trans        &trans                    &trans      &trans        &trans   &trans        &trans          &trans          &trans
+            >;
+        };
+
+        a {  // 2
 /* Text Editing / Navigation
 	Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
 	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
@@ -307,7 +330,7 @@
             >;
         };
 
-        b {  // 2
+        b {  // 3
 /* Symbols
 	Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
 	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
@@ -328,7 +351,7 @@
             >;
         };
 
-        ab {  // 3
+        ab {  // 4
 /* ? / F Keys
     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
 	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
@@ -350,7 +373,7 @@
             >;
         };
 
-        c {  // 4
+        c {  // 5
 /* ? / Numpad
 	Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
 	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
@@ -372,7 +395,7 @@
             >;
         };
 
-        ac {  // 5
+        ac {  // 6
 /* ?
  * .--------------------------------------------                                    --------------------------------------------.
  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
@@ -392,7 +415,7 @@
             >;
         };
 
-        bc {  // 6
+        bc {  // 7
 /* ?
  * .--------------------------------------------                                    --------------------------------------------.
  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
@@ -412,7 +435,7 @@
             >;
         };
 
-        abc {  // 7
+        abc {  // 8
 /* ?
  * .--------------------------------------------                                    --------------------------------------------.
  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
@@ -432,7 +455,7 @@
             >;
         };
 
-        d {  // 8
+        d {  // 9
 /* Media / Media
     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
 	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
@@ -453,7 +476,7 @@
             >;
         };
 
-        ad {  // 9
+        ad {  // 10
 /* ?
  * .--------------------------------------------                                    --------------------------------------------.
  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
@@ -473,7 +496,7 @@
             >;
         };
 
-        bd {  // 10
+        bd {  // 11
 /* ?
  * .--------------------------------------------                                    --------------------------------------------.
  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
@@ -493,7 +516,7 @@
             >;
         };
 
-        abd {  // 11
+        abd {  // 12
 /* ?
  * .--------------------------------------------                                    --------------------------------------------.
  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
@@ -513,7 +536,7 @@
             >;
         };
 
-        cd {  // 12
+        cd {  // 13
 /* Bluetooth
  * .-----------------------------------------------                                    -----------------------------------------------.
  * | BT Clear |       |      |      |      |      |                                    |  BT 1 | BT 2 | BT 3 | BT 4 | BT 5 |          |
@@ -527,13 +550,13 @@
  */
                         bindings = <
 &bt BT_CLR &none        &none        &none           &none        &none                                         &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none
-&trans     &none        &none        &tog 16         &none        &none                                         &none        &none        &none        &none        &none        &none
+&trans     &none        &tog 1       &tog 17         &none        &none                                         &none        &none        &none        &none        &none        &none
 &trans     &none        &none        &none           &bt BT_PRV   &bt BT_NXT  &trans                 &trans     &none        &none        &none        &none        &none        &none
 &trans     &trans       &trans       &trans          &trans       &trans      &trans                 &trans     &trans       &trans       &trans       &trans       &trans       &trans
             >;
         };
 
-        acd {  // 13
+        acd {  // 14
 /* ?
  * .--------------------------------------------                                    --------------------------------------------.
  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
@@ -553,7 +576,7 @@
             >;
         };
 
-        bcd {  // 14
+        bcd {  // 15
 /* Symbols
  * .--------------------------------------------                                    --------------------------------------------.
  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
@@ -573,7 +596,7 @@
             >;
         };
 
-        abcd {  // 15
+        abcd {  // 16
 /* Symbols
  * .--------------------------------------------                                    --------------------------------------------.
  * |BOOTLDR|       |      |      |      | RESET|                                    | RESET |      |      |      |      |BOOTLDR|
@@ -593,7 +616,7 @@
             >;
         };
 
-        win_lin_mods {  // 16
+        win_lin_mods {  // 17
 /* QWERTY
     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
 	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
@@ -615,7 +638,7 @@
             >;
         };
 
-        a_win_lin_mods {    // 17
+        a_win_lin_mods {    // 18
 /* QWERTY
     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
 	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
