@@ -29,5 +29,4 @@
 #include <behaviors/studio_unlock.dtsi>
 #include <behaviors/mouse_keys.dtsi>
 
-#include <behaviors/os_mode.dtsi>
-#include <behaviors/os_key.dtsi>
+#include <behaviors/meta_mod.dtsi>
