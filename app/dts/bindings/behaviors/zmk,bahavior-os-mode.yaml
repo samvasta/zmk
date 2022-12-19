@@ -1,8 +1,0 @@
-# Copyright (c) 2022 The ZMK Contributors
-# SPDX-License-Identifier: MIT
-
-description: OS Mode behavior
-
-compatible: "zmk,behavior-os-mode"
-
-include: zero_param.yaml

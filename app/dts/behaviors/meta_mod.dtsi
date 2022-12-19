@@ -1,0 +1,24 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/ {
+	behaviors {
+		/omit-if-no-ref/ meta: behavior_meta_mod {
+			compatible = "zmk,behavior-meta-mod";
+			label = "META_MOD_KEY";
+			#binding-cells = <1>;
+			bindings = <&kp>;
+		};
+
+		/omit-if-no-ref/ set_meta: behavior_set_meta_mod {
+			compatible = "zmk,behavior-meta-mod";
+			label = "SET_META_MOD";
+			#binding-cells = <1>;
+			bindings = <&kp>;
+		};
+		
+	};
+};

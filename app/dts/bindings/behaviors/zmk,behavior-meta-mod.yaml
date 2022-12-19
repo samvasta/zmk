@@ -1,11 +1,11 @@
 # Copyright (c) 2022 The ZMK Contributors
 # SPDX-License-Identifier: MIT
 
-description: OS Key behavior
+description: Meta mod behavior
 
-compatible: "zmk,behavior-os-key"
+compatible: "zmk,behavior-meta-mod"
 
-include: two_param.yaml
+include: one_param.yaml
 
 properties:
   bindings:

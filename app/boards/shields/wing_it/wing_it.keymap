@@ -3,6 +3,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/reset.h>
+#include <dt-bindings/zmk/ext_power.h>
 
 / {
     conditional_layers {
@@ -64,202 +65,19 @@
             if-layers = <2 17>;
             then-layer = <18>;
         };
-    };
-
-    macros {
-        undo_winlin: undo_winlin {
-            label = "undo_winlin";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp Z>
-                , <&macro_release &kp LCTRL>
-                ;
+        win_lin_c_default_behavior {
+            if-layers = <5>;
+            then-layer = <5>;
         };
-
-        undo_osx: undo_osx {
-            label = "undo_osx";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCMD>
-                , <&macro_tap &kp Z>
-                , <&macro_release &kp LCMD>
-                ;
+        win_lin_c {
+            if-layers = <5 17>;
+            then-layer = <19>;
         };
-
-        redo_winlin: redo_winlin {
-            label = "redo_winlin";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp Y>
-                , <&macro_release &kp LCTRL>
-                ;
-        };
-
-        redo_osx: redo_osx {
-            label = "redo_osx";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCMD>
-                , <&macro_tap &kp Y>
-                , <&macro_release &kp LCMD>
-                ;
-        };
-
-        shifttab: shifttab {
-            label = "shifttab";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LSHFT>
-                , <&macro_tap &kp TAB>
-                , <&macro_release &kp LSHFT>
-                ;
-        };
-
-        shiftgrave: shiftgrave {
-            label = "shiftgrave";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LSHFT>
-                , <&macro_tap &kp GRAVE>
-                , <&macro_release &kp LSHFT>
-                ;
-        };
-
-        cut_winlin: cut_winlin {
-            label = "cut_winlin";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp X>
-                , <&macro_release &kp LCTRL>
-                ;
-        };
-
-        cut_osx: cut_osx {
-            label = "cut_osx";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCMD>
-                , <&macro_tap &kp X>
-                , <&macro_release &kp LCMD>
-                ;
-        };
-
-        copy_winlin: copy_winlin {
-            label = "copy_winlin";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp C>
-                , <&macro_release &kp LCTRL>
-                ;
-        };
-
-        copy_osx: copy_osx {
-            label = "copy_osx";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCMD>
-                , <&macro_tap &kp C>
-                , <&macro_release &kp LCMD>
-                ;
-        };
-
-        paste_winlin: paste_winlin {
-            label = "paste_winlin";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp V>
-                , <&macro_release &kp LCTRL>
-                ;
-        };
-
-        paste_osx: paste_osx {
-            label = "paste_osx";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LCMD>
-                , <&macro_tap &kp V>
-                , <&macro_release &kp LCMD>
-                ;
+        win_lin_cd {
+            if-layers = <5 9 17>;
+            then-layer = <13>;
         };
     };
-
-    // os_keys {
-        // mod1: mod1 {
-        //     label = "control";
-        //     compatible = "zmk,behavior-os-key";
-        //     #binding-cells = <0>;
-        //     winlin_binding = <&kp LCTRL>;
-        //     osx_binding = <&kp LCTRL>;
-        // };
-
-        // mod2: mod2 {
-        //     label = "meta";
-        //     compatible = "zmk,behavior-os-key";
-        //     #binding-cells = <0>;
-        //     winlin_binding = <&kp LWIN>;
-        //     osx_binding = <&kp LALT>;
-        // };
-        // mod3: mod3 {
-        //     label = "alt";
-        //     compatible = "zmk,behavior-os-key";
-        //     #binding-cells = <0>;
-        //     winlin_binding = <&kp LALT>;
-        //     osx_binding = <&kp LCMD>;
-        // };
-
-
-        // undo: undo {
-        //     label = "undo";
-        //     compatible = "zmk,behavior-os-key";
-        //     #binding-cells = <2>;
-        //     bindings = <&undo_winlin>, <&undo_osx>;
-        // };
-
-        // redo: redo {
-        //     label = "redo";
-        //     compatible = "zmk,behavior-os-key";
-        //     #binding-cells = <2>;
-        //     bindings = <&redo_winlin>, <&redo_osx>;
-        // };
-
-        // cut: cut {
-        //     label = "cut";
-        //     compatible = "zmk,behavior-os-key";
-        //     #binding-cells = <2>;
-        //     bindings = <&cut_winlin>, <&cut_osx>;
-        // };
-
-        // copy: copy {
-        //     label = "copy";
-        //     compatible = "zmk,behavior-os-key";
-        //     #binding-cells = <2>;
-        //     bindings = <&copy_winlin>, <&copy_osx>;
-        // };
-
-        // paste: paste {
-        //     label = "paste";
-        //     compatible = "zmk,behavior-os-key";
-        //     #binding-cells = <2>;
-        //     bindings = <&paste_winlin>, <&paste_osx>;
-        // };
-    // };
 
 	keymap {
 		compatible = "zmk,keymap";
@@ -313,7 +131,7 @@
 /* Text Editing / Navigation
 	Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
 	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-	│    `   │ SHFT+` │  UNDO  │  REDO  │  HOME  │ PG.UP  │                                                    │    K   │ BKSPC  │   UP   │  DEL   │ INSERT │ PRTSCR │
+	│   ESC  │ SHFT+` │  UNDO  │  REDO  │  HOME  │ PG.UP  │                                                    │    K   │ BKSPC  │   UP   │  DEL   │ INSERT │ PRTSCR │
 	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
 	│        │SHFT+TAB│ L OPT  │ L CMD  │   END  │ PG.DN  │                                                    │    J   │ LEFT   │  DOWN  │  RIGHT │ XXXXXX │        │
 	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
@@ -323,10 +141,10 @@
 	└────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
  */
                         bindings = <
-&kp ESC   &shiftgrave  &undo_osx    &redo_osx    &kp HOME     &kp PG_UP                                     &kp K        &kp BSPC     &kp UP       &kp DEL      &kp INS     &kp PSCRN
-&trans    &shifttab    &kp LALT     &kp LCMD     &kp END      &kp PG_DN                                     &kp J        &kp LEFT     &kp DOWN     &kp RIGHT    &none       &trans
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &cut_osx     &copy_osx    &paste_osx   &none       &trans
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+&kp ESC   &kp LS(GRAVE) &kp LG(Z)    &kp LG(Y)    &kp HOME     &kp PG_UP                                     &kp K        &kp BSPC     &kp UP       &kp DEL      &kp INS     &kp PSCRN
+&trans    &kp LS(TAB)   &kp LALT     &kp LCMD     &kp END      &kp PG_DN                                     &kp J        &kp LEFT     &kp DOWN     &kp RIGHT    &none       &trans
+&trans    &none         &none        &none        &none        &none     &trans                 &trans       &none        &kp LG(X)    &kp LG(C)    &kp LG(V)    &none       &trans
+&trans    &trans        &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
             >;
         };
 
@@ -355,20 +173,20 @@
 /* ? / F Keys
     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
 	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-	│        │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │  F1    │  F2    │  F3    │  F4    │    F5  │
+	│        │  F13   │  F14   │  F15   │  F16   │ XXXXXX │                                                    │ XXXXXX │  F1    │  F2    │  F3    │  F4    │    F5  │
 	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-	│        │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │  F6    │  F7    │  F8    │  F9    │   F10  │
+	│        │  F17   │  F18   │  F19   │  F20   │ XXXXXX │                                                    │ XXXXXX │  F6    │  F7    │  F8    │  F9    │   F10  │
 	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-	│        │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │  F11   │  F12   │  F13   │  F14   │   F15  │
+	│        │  F21   │  F22   │  F23   │  F24   │ XXXXXX │                                                    │ XXXXXX │  F11   │  F12   │  F13   │  F14   │   F15  │
 	├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
 	│        │        │        │        │        │        │  │        ││        │        │        ││        │  │        │        │        │        │        │        │
 	└────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
 
  */
                         bindings = <
-&trans    &none        &none        &none        &none        &none                                         &none        &kp F1       &kp F2       &kp F3       &kp F4      &none
-&trans    &none        &none        &none        &none        &none                                         &none        &kp F5       &kp F6       &kp F7       &kp F8      &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &kp F9       &kp F10      &kp F11      &kp F12     &none
+&trans    &kp F13      &kp F14      &kp F15      &kp F16      &none                                         &none        &kp F1       &kp F2       &kp F3       &kp F4      &none
+&trans    &kp F17      &kp F18      &kp F19      &kp F20      &none                                         &none        &kp F5       &kp F6       &kp F7       &kp F8      &none
+&trans    &kp F21      &kp F22      &kp F23      &kp F24      &none     &trans                 &trans       &none        &kp F9       &kp F10      &kp F11      &kp F12     &none
 &trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
             >;
         };
@@ -377,20 +195,20 @@
 /* ? / Numpad
 	Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
 	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-	│        │  F13   │  F14   │  F15   │  F16   │        │                                                    │ NUM 0  │ NUM 1  │ NUM 2  │ NUM 3  │ NUM 4  │ NUM 5  │
+	│        │ xxxxxx │ xxxxxx │ RELOAD │ NEWTAB │ xxxxxx │                                                    │ NUM 0  │ NUM 1  │ NUM 2  │ NUM 3  │ NUM 4  │ NUM 5  │
 	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-	│        │  F17   │  F18   │  F19   │  F20   │        │                                                    │   x    │ NUM 6  │ NUM 7  │ NUM 8  │ NUM 9  │    A   │
+	│        │  REDO  │ xxxxxx │ SEL.ALL│  FIND  │ REPLACE│                                                    │   x    │ NUM 6  │ NUM 7  │ NUM 8  │ NUM 9  │    A   │
 	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-	│        │  F21   │  F22   │  F23   │  F24   │        │                                                    │   #    │    B   │    C   │    D   │   E    │    F   │
+	│        │  UNDO  │  CUT   │  COPY  │  PASTE │ xxxxxx │                                                    │   #    │    B   │    C   │    D   │   E    │    F   │
 	├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
 	│        │        │        │        │        │        │  │        ││        │        │        ││        │  │        │        │        │        │        │        │
 	└────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
 
  */
                         bindings = <
-&trans    &kp F13   &kp F14    &kp F15   &kp F16   &none                                         &kp N0       &kp N1       &kp N2       &kp N3       &kp N4      &kp N5
-&trans    &kp F17   &kp F18    &kp F19   &kp F20   &none                                         &kp X        &kp N6       &kp N7       &kp N8       &kp N9      &kp A
-&trans    &kp F21   &kp F22    &kp F23   &kp F24   &none     &trans                 &trans       &kp POUND    &kp B        &kp C        &kp D        &kp E       &kp F
+&trans    &none     &none      &kp LG(R) &kp LG(T) &none                                         &kp N0       &kp N1       &kp N2       &kp N3       &kp N4      &kp N5
+&trans    &kp LG(Y) &none      &kp LG(A) &kp LG(F) &kp LG(H)                                     &kp X        &kp N6       &kp N7       &kp N8       &kp N9      &kp A
+&trans    &kp LG(Z) &kp LG(X)  &kp LG(C) &kp LG(V) &none     &trans                 &trans       &kp POUND    &kp B        &kp C        &kp D        &kp E       &kp F
 &trans    &trans    &trans     &trans    &trans    &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
             >;
         };
@@ -549,10 +367,10 @@
  * .-------------------------------------------------------------        -------------------------------------------------------------.
  */
                         bindings = <
-&bt BT_CLR &none        &none        &none           &none        &none                                         &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none
-&trans     &none        &tog 1       &tog 17         &none        &none                                         &none        &none        &none        &none        &none        &none
-&trans     &none        &none        &none           &bt BT_PRV   &bt BT_NXT  &trans                 &trans     &none        &none        &none        &none        &none        &none
-&trans     &trans       &trans       &trans          &trans       &trans      &trans                 &trans     &trans       &trans       &trans       &trans       &trans       &trans
+&bt BT_CLR &none        &none        &none           &none        &none                                         &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3       &bt BT_SEL 4      &none
+&trans     &none        &tog 1       &tog 17         &none        &none                                         &none        &none        &none        &none              &none             &none
+&trans     &none        &none        &none           &bt BT_PRV   &bt BT_NXT  &trans                 &trans     &none        &none        &none        &ext_power EP_OFF  &ext_power EP_ON  &none
+&trans     &trans       &trans       &trans          &trans       &trans      &trans                 &trans     &trans       &trans       &trans       &trans             &trans            &trans
             >;
         };
 
@@ -642,21 +460,43 @@
 /* QWERTY
     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
 	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-	│        │        │        │        │        │        │                                                    │        │        │        │        │        │        │
+	│        │        │  UNDO  │  REDO  │        │        │                                                    │        │        │        │        │        │        │
 	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
 	│        │        │ L CTL  │  L ALT │        │        |                                                    │        │        │        │        │        │        │
 	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-	│        │        │        │        │        │        │                                                    │        │        │        │        │        │        │
+	│        │        │        │        │        │        │                                                    │        │  COPY  │  CUT   │  PASTE │        │        │
 	├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
 	│        │        │        │        │        │        │  │        ││        │        │        ││        │  │        │        │        │        │        │        │
 	└────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
 
  */
                         bindings = <
-&trans   &trans   &undo_winlin &redo_winlin  &trans   &trans                                          &trans   &trans      &trans       &trans        &trans   &trans
-&trans   &trans   &kp LCTL     &kp LALT      &trans   &trans                                          &trans   &trans      &trans       &trans        &trans   &trans
-&trans   &trans   &trans       &trans        &trans   &trans    &trans                    &trans      &trans   &cut_winlin &copy_winlin &paste_winlin &trans   &trans
-&trans   &trans   &trans       &trans        &trans   &trans    &trans                    &trans      &trans   &trans      &trans       &trans        &trans   &trans
+&trans   &trans   &kp LC(Z) &kp LC(Y) &trans   &trans                                          &trans   &trans    &trans    &trans    &trans   &trans
+&trans   &trans   &kp LCTL  &kp LALT  &trans   &trans                                          &trans   &trans    &trans    &trans    &trans   &trans
+&trans   &trans   &trans    &trans    &trans   &trans    &trans                    &trans      &trans   &kp LC(X) &kp LC(C) &kp LC(V) &trans   &trans
+&trans   &trans   &trans    &trans    &trans   &trans    &trans                    &trans      &trans   &trans    &trans    &trans    &trans   &trans
+            >;
+        };
+
+        c_win_lin_mods {  // 19
+/* ? / Numpad
+	Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
+	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
+	│        │ xxxxxx │ xxxxxx │ RELOAD │ NEWTAB │ xxxxxx │                                                    │ NUM 0  │ NUM 1  │ NUM 2  │ NUM 3  │ NUM 4  │ NUM 5  │
+	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+	│        │  REDO  │ xxxxxx │ SEL.ALL│  FIND  │ REPLACE│                                                    │   x    │ NUM 6  │ NUM 7  │ NUM 8  │ NUM 9  │    A   │
+	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+	│        │  UNDO  │  CUT   │  COPY  │  PASTE │ xxxxxx │                                                    │   #    │    B   │    C   │    D   │   E    │    F   │
+	├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
+	│        │        │        │        │        │        │  │        ││        │        │        ││        │  │        │        │        │        │        │        │
+	└────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
+
+ */
+                        bindings = <
+&trans    &none     &none      &kp LC(R) &kp LC(T) &none                                         &kp N0       &kp N1       &kp N2       &kp N3       &kp N4      &kp N5
+&trans    &kp LC(Y) &none      &kp LC(A) &kp LC(F) &kp LC(H)                                     &kp X        &kp N6       &kp N7       &kp N8       &kp N9      &kp A
+&trans    &kp LC(Z) &kp LC(X)  &kp LC(C) &kp LC(V) &none     &trans                 &trans       &kp POUND    &kp B        &kp C        &kp D        &kp E       &kp F
+&trans    &trans    &trans     &trans    &trans    &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
             >;
         };
     };

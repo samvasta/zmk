@@ -21,5 +21,4 @@
 #include <behaviors/macros.dtsi>
 #include <behaviors/mouse_key_press.dtsi>
 
-#include <behaviors/os_mode.dtsi>
-#include <behaviors/os_key.dtsi>
+#include <behaviors/meta_mod.dtsi>
