@@ -57,25 +57,20 @@
             if-layers = <2 3 5 9>;
             then-layer = <16>;
         };
-        win_lin_a_default_behavior {
-            if-layers = <2>;
-            then-layer = <2>;
+    };
+
+     macros {
+        pair_mac: pair_mac {
+            label = "Pair_Mac";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bt BT_SEL 1>, <&metaset 1> ;
         };
-        win_lin_a {
-            if-layers = <2 17>;
-            then-layer = <18>;
-        };
-        win_lin_c_default_behavior {
-            if-layers = <5>;
-            then-layer = <5>;
-        };
-        win_lin_c {
-            if-layers = <5 17>;
-            then-layer = <19>;
-        };
-        win_lin_cd {
-            if-layers = <5 9 17>;
-            then-layer = <13>;
+        pair_lin: pair_lin {
+            label = "Pair_Linux";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&bt BT_SEL 0>, <&metaset 0> ;
         };
     };
 
@@ -100,7 +95,7 @@
 &kp  ESC   &kp  Q          &kp  W          &kp  E   &kp  R   &kp  T                                              &kp  Y        &kp  U   &kp  I        &kp  O          &kp  P          &kp  BSPC
 &kp  TAB   &kp  A          &kp  S          &kp  D   &kp  F   &kp  G                                              &kp  H        &kp  J   &kp  K        &kp  L          &kp  SEMI       &kp  ENTER
 &kp  LSHFT &kp  Z          &kp  X          &kp  C   &kp  V   &kp  B        &mo  5                    &mo  9      &kp  N        &kp  M   &kp  COMMA    &kp  DOT        &kp  SLASH      &kp  RSHFT
-&kp  LCTRL &kp LALT        &kp LCMD        &mo  9   &mo  3   &kp  SPACE    &mo  2                    &mo  3      &kp  SPACE    &mo  2   &mo  5        &kp RCMD        &kp RALT        &kp  LCTRL
+&kp  LCTRL &meta LGUI LALT &meta LALT LCMD &mo  9   &mo  3   &kp  SPACE    &mo  2                    &mo  3      &kp  SPACE    &mo  2   &mo  5        &meta RALT RCMD &meta RGUI RALT &kp  RCTRL
             >;
         };
 
@@ -141,10 +136,10 @@
 	└────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
  */
                         bindings = <
-&kp ESC   &kp LS(GRAVE) &kp LG(Z)    &kp LG(Y)    &kp HOME     &kp PG_UP                                     &kp K        &kp BSPC     &kp UP       &kp DEL      &kp INS     &kp PSCRN
-&trans    &kp LS(TAB)   &kp LALT     &kp LCMD     &kp END      &kp PG_DN                                     &kp J        &kp LEFT     &kp DOWN     &kp RIGHT    &none       &trans
-&trans    &none         &none        &none        &none        &none     &trans                 &trans       &none        &kp LG(X)    &kp LG(C)    &kp LG(V)    &none       &trans
-&trans    &trans        &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+&kp ESC   &kp LS(GRAVE) &meta LC(Z) LG(Z)  &meta LC(Y) LG(Y)  &kp HOME     &kp PG_UP                                     &kp K        &kp BSPC          &kp UP            &kp DEL           &kp INS     &kp PSCRN
+&trans    &kp LS(TAB)   &meta LCTL LALT    &meta LALT LCMD    &kp END      &kp PG_DN                                     &kp J        &kp LEFT          &kp DOWN          &kp RIGHT         &none       &trans
+&trans    &none         &none              &none              &none        &none     &trans                 &trans       &none        &meta LC(X) LG(X) &meta LC(C) LG(C) &meta LC(V) LG(V) &none       &trans
+&trans    &trans        &trans             &trans             &trans       &trans    &trans                 &trans       &trans       &trans            &trans            &trans            &trans      &trans
             >;
         };
 
@@ -206,10 +201,10 @@
 
  */
                         bindings = <
-&trans    &none     &none      &kp LG(R) &kp LG(T) &none                                         &kp N0       &kp N1       &kp N2       &kp N3       &kp N4      &kp N5
-&trans    &kp LG(Y) &none      &kp LG(A) &kp LG(F) &kp LG(H)                                     &kp X        &kp N6       &kp N7       &kp N8       &kp N9      &kp A
-&trans    &kp LG(Z) &kp LG(X)  &kp LG(C) &kp LG(V) &none     &trans                 &trans       &kp POUND    &kp B        &kp C        &kp D        &kp E       &kp F
-&trans    &trans    &trans     &trans    &trans    &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+&trans    &none             &none             &meta LC(R) LG(R) &meta LC(T) LG(T) &none                                              &kp N0       &kp N1       &kp N2       &kp N3       &kp N4      &kp N5
+&trans    &meta LC(Y) LG(Y) &none             &meta LC(A) LG(A) &meta LC(F) LG(F) &meta LC(H) LG(H)                                  &kp X        &kp N6       &kp N7       &kp N8       &kp N9      &kp A
+&trans    &meta LC(Z) LG(Z) &meta LC(X) LG(X) &meta LC(C) LG(C) &meta LC(V) LG(V) &none             &trans                &trans     &kp POUND    &kp B        &kp C        &kp D        &kp E       &kp F
+&trans    &trans            &trans            &trans            &trans            &trans            &trans                &trans     &trans       &trans       &trans       &trans       &trans      &trans
             >;
         };
 
@@ -367,8 +362,8 @@
  * .-------------------------------------------------------------        -------------------------------------------------------------.
  */
                         bindings = <
-&bt BT_CLR &none        &none        &none           &none        &none                                         &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3       &bt BT_SEL 4      &none
-&trans     &none        &tog 1       &tog 17         &none        &none                                         &none        &none        &none        &none              &none             &none
+&bt BT_CLR &none        &none        &none           &none        &none                                         &pair_lin    &pair_mac    &bt BT_SEL 2 &bt BT_SEL 3       &bt BT_SEL 4      &none
+&trans     &none        &tog 1       &metaset 0      &metaset 1   &none                                         &none        &none        &none        &none              &none             &none
 &trans     &none        &none        &none           &bt BT_PRV   &bt BT_NXT  &trans                 &trans     &none        &none        &none        &ext_power EP_OFF  &ext_power EP_ON  &none
 &trans     &trans       &trans       &trans          &trans       &trans      &trans                 &trans     &trans       &trans       &trans       &trans             &trans            &trans
             >;
@@ -431,72 +426,6 @@
 &trans      &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
 &trans      &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
 &trans      &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-            >;
-        };
-
-        win_lin_mods {  // 17
-/* QWERTY
-    Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
-	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-	│        │        │        │        │        │        │                                                    │        │        │        │        │        │        │
-	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-	│        │        │        │        │        │        |                                                    │        │        │        │        │        │        │
-	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-	│        │        │        │        │        │        │                                                    │        │        │        │        │        │        │
-	├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
-	│        │  GUI   │  ALT   │        │        │        │  │        ││        │        │        ││        │  │        │        │        │  ALT   │  GUI   │        │
-	└────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
-
- */
-                        bindings = <
-&trans   &trans   &trans    &trans   &trans   &trans                                          &trans   &trans   &trans   &trans   &trans   &trans
-&trans   &trans   &trans    &trans   &trans   &trans                                          &trans   &trans   &trans   &trans   &trans   &trans
-&trans   &trans   &trans    &trans   &trans   &trans    &trans                    &trans      &trans   &trans   &trans   &trans   &trans   &trans
-&trans   &kp LGUI &kp LALT  &trans   &trans   &trans    &trans                    &trans      &trans   &trans   &trans   &kp RALT &kp RGUI &trans
-            >;
-        };
-
-        a_win_lin_mods {    // 18
-/* QWERTY
-    Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
-	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-	│        │        │  UNDO  │  REDO  │        │        │                                                    │        │        │        │        │        │        │
-	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-	│        │        │ L CTL  │  L ALT │        │        |                                                    │        │        │        │        │        │        │
-	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-	│        │        │        │        │        │        │                                                    │        │  COPY  │  CUT   │  PASTE │        │        │
-	├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
-	│        │        │        │        │        │        │  │        ││        │        │        ││        │  │        │        │        │        │        │        │
-	└────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
-
- */
-                        bindings = <
-&trans   &trans   &kp LC(Z) &kp LC(Y) &trans   &trans                                          &trans   &trans    &trans    &trans    &trans   &trans
-&trans   &trans   &kp LCTL  &kp LALT  &trans   &trans                                          &trans   &trans    &trans    &trans    &trans   &trans
-&trans   &trans   &trans    &trans    &trans   &trans    &trans                    &trans      &trans   &kp LC(X) &kp LC(C) &kp LC(V) &trans   &trans
-&trans   &trans   &trans    &trans    &trans   &trans    &trans                    &trans      &trans   &trans    &trans    &trans    &trans   &trans
-            >;
-        };
-
-        c_win_lin_mods {  // 19
-/* ? / Numpad
-	Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
-	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-	│        │ xxxxxx │ xxxxxx │ RELOAD │ NEWTAB │ xxxxxx │                                                    │ NUM 0  │ NUM 1  │ NUM 2  │ NUM 3  │ NUM 4  │ NUM 5  │
-	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-	│        │  REDO  │ xxxxxx │ SEL.ALL│  FIND  │ REPLACE│                                                    │   x    │ NUM 6  │ NUM 7  │ NUM 8  │ NUM 9  │    A   │
-	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-	│        │  UNDO  │  CUT   │  COPY  │  PASTE │ xxxxxx │                                                    │   #    │    B   │    C   │    D   │   E    │    F   │
-	├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
-	│        │        │        │        │        │        │  │        ││        │        │        ││        │  │        │        │        │        │        │        │
-	└────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
-
- */
-                        bindings = <
-&trans    &none     &none      &kp LC(R) &kp LC(T) &none                                         &kp N0       &kp N1       &kp N2       &kp N3       &kp N4      &kp N5
-&trans    &kp LC(Y) &none      &kp LC(A) &kp LC(F) &kp LC(H)                                     &kp X        &kp N6       &kp N7       &kp N8       &kp N9      &kp A
-&trans    &kp LC(Z) &kp LC(X)  &kp LC(C) &kp LC(V) &none     &trans                 &trans       &kp POUND    &kp B        &kp C        &kp D        &kp E       &kp F
-&trans    &trans    &trans     &trans    &trans    &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
             >;
         };
     };
