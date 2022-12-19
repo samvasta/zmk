@@ -5,7 +5,8 @@ description: Meta mod behavior
 
 compatible: "zmk,behavior-meta-mod"
 
-include: one_param.yaml
+include: two_param.yaml
+
 
 properties:
   bindings:

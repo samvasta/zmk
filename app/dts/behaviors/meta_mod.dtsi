@@ -9,15 +9,14 @@
 		/omit-if-no-ref/ meta: behavior_meta_mod {
 			compatible = "zmk,behavior-meta-mod";
 			label = "META_MOD_KEY";
-			#binding-cells = <1>;
-			bindings = <&kp>;
+			#binding-cells = <2>;
+			bindings = <&kp>, <&kp>;
 		};
 
-		/omit-if-no-ref/ set_meta: behavior_set_meta_mod {
-			compatible = "zmk,behavior-meta-mod";
-			label = "SET_META_MOD";
+		/omit-if-no-ref/ metaset: behavior_set_meta_mod {
+			compatible = "zmk,behavior-meta-mod-set";
+			label = "META_MOD_SET";
 			#binding-cells = <1>;
-			bindings = <&kp>;
 		};
 		
 	};
