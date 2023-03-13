@@ -64,13 +64,13 @@
             label = "Pair_Mac";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&bt BT_SEL 1>, <&metaset 1> ;
+            bindings = <&bt BT_SEL 1>, <&metaset 1>, <&ext_power EP_OFF> ;
         };
         pair_lin: pair_lin {
             label = "Pair_Linux";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&bt BT_SEL 0>, <&metaset 0> ;
+            bindings = <&bt BT_SEL 0>, <&metaset 0>, <&ext_power EP_OFF> ;
         };
     };
 
@@ -78,6 +78,29 @@
 		compatible = "zmk,keymap";
 
         default_layer {
+/* Carpalx QGMLWY
+    Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
+	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
+	│  ESC   │    Q   │   W    │   E    │   R    │   T    │                                                    │    Y   │   U    │   I    │    O   │   P    │ BKSPC  │
+	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+	│  TAB   │    A   │   S    │   D    │   F    │   G    |                                                    │    H   │   J    │   K    │    L   │   ;    │ ENTER  │
+	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+	│  SHIFT │    Z   │   X    │   C    │   V    │   B    │                                                    │    N   │   M    │   , <  │  . >   │   / ?  │ R SHFT │
+	├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
+	│  CTL   │  GUI   │  ALT   │  FN 8  │  FN 2  │  SPACE │  │  FN 1  ││  FN 4  │        │  FN 8  ││  FN 2  │  │ SPACE  │  FN 1  │  FN 4  │  ALT   │  GUI   │  CTL   │
+	└────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
+
+ */
+                        bindings = <
+&kp  ESC   &kp  Q          &kp  G          &kp  M   &kp  L   &kp  W                                              &kp  Y        &kp  F   &kp  U        &kp  B          &kp  SEMI       &kp  BSPC
+&kp  TAB   &kp  D          &kp  S          &kp  T   &kp  N   &kp  R                                              &kp  I        &kp  A   &kp  E        &kp  O          &kp  H          &kp  ENTER
+&kp  LSHFT &kp  Z          &kp  X          &kp  C   &kp  V   &kp  J        &mo  5                    &mo  9      &kp  K        &kp  P   &kp  COMMA    &kp  DOT        &kp  SLASH      &kp  RSHFT
+&kp  LCTRL &meta LGUI LALT &meta LALT LCMD &mo  9   &mo  3   &kp  SPACE    &mo  2                    &mo  3      &kp  SPACE    &mo  2   &mo  5        &meta RALT RCMD &meta RGUI RALT &kp  RCTRL
+            >;
+        };
+
+
+        alt_layout {
 /* QWERTY
     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
 	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
@@ -96,29 +119,6 @@
 &kp  TAB   &kp  A          &kp  S          &kp  D   &kp  F   &kp  G                                              &kp  H        &kp  J   &kp  K        &kp  L          &kp  SEMI       &kp  ENTER
 &kp  LSHFT &kp  Z          &kp  X          &kp  C   &kp  V   &kp  B        &mo  5                    &mo  9      &kp  N        &kp  M   &kp  COMMA    &kp  DOT        &kp  SLASH      &kp  RSHFT
 &kp  LCTRL &meta LGUI LALT &meta LALT LCMD &mo  9   &mo  3   &kp  SPACE    &mo  2                    &mo  3      &kp  SPACE    &mo  2   &mo  5        &meta RALT RCMD &meta RGUI RALT &kp  RCTRL
-            >;
-        };
-
-
-        alt_layout {
-/* Carpalx QGMLWY
-    Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
-	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-	│  ESC   │    Q   │   W    │   E    │   R    │   T    │                                                    │    Y   │   U    │   I    │    O   │   P    │ BKSPC  │
-	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-	│  TAB   │    A   │   S    │   D    │   F    │   G    |                                                    │    H   │   J    │   K    │    L   │   ;    │ ENTER  │
-	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-	│  SHIFT │    Z   │   X    │   C    │   V    │   B    │                                                    │    N   │   M    │   , <  │  . >   │   / ?  │ R SHFT │
-	├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
-	│  CTL   │  GUI   │  ALT   │  FN 8  │  FN 2  │  SPACE │  │  FN 1  ││  FN 4  │        │  FN 8  ││  FN 2  │  │ SPACE  │  FN 1  │  FN 4  │  ALT   │  GUI   │  CTL   │
-	└────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
-
- */
-                        bindings = <
-&trans   &kp  Q          &kp  G          &kp  M   &kp  L   &kp  W                                              &kp  Y        &kp  F   &kp  U        &kp  B          &kp  SEMI       &trans
-&trans   &kp  D          &kp  S          &kp  T   &kp  N   &kp  R                                              &kp  I        &kp  A   &kp  E        &kp  O          &kp  H          &trans
-&trans   &kp  Z          &kp  X          &kp  C   &kp  V   &kp  J        &trans                    &trans      &kp  K        &kp  P   &kp  COMMA    &kp  DOT        &kp  SLASH      &trans
-&trans   &trans          &trans          &trans   &trans   &trans        &trans                    &trans      &trans        &trans   &trans        &trans          &trans          &trans
             >;
         };
 
