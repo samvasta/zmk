@@ -7,7 +7,6 @@ compatible: "zmk,behavior-meta-mod"
 
 include: two_param.yaml
 
-
 properties:
   bindings:
     type: phandles
