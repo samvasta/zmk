@@ -116,16 +116,16 @@
 	├────────┼─────────┼─────────┼─────────┼─────────┼────────┤                                                    ├────────┼─────────┼─────────┼─────────┼─────────┼────────┤
 	│  TAB   │    S    │gui/alt/T│ctl/gui/R│alt/ctl/D│   Y    |                                                    │    .   │alt/ctl/N│ctl/gui/A│gui/alt/E│    I    │ ENTER  │
 	├────────┼─────────┼─────────┼─────────┼─────────┼────────┤                                                    ├────────┼─────────┼─────────┼─────────┼─────────┼────────┤
-	│  SHIFT │    V    │    K    │  QU/Q   │    G    │   W    │                                                    │    B   │    H    │    ;    │    '    │    ,    │ R SHFT │
+	│ctrl/cmd│    V    │    K    │  QU/Q   │    G    │   W    │                                                    │    B   │    H    │    ;    │    '    │    ,    │ctrl/cmd│
 	└────────┴─────────┼─────────┼─────────┼─────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼─────────┼─────────┼─────────┼─────────┴────────┘
 	                   │Media/Sys│ctrl/cmd │Func/num │  Shift │  │Nav./sym│                            │Sym/nav.│  │  Space │Num/func │ctrl/cmd |Media/sys│
 	                   └─────────┴─────────┴─────────┴────────┘  └────────┘                            └────────┘  └────────┴─────────┴─────────┴─────────┘
  */
                         bindings = <
-&kp  ESC   &kp  Q          &kp  W          &kp  E   &kp  R   &kp  T                                              &kp  Y        &kp  U   &kp  I        &kp  O          &kp  P          &kp  BSPC
-&kp  TAB   &kp  A          &kp  S          &kp  D   &kp  F   &kp  G                                              &kp  H        &kp  J   &kp  K        &kp  L          &kp  SEMI       &kp  ENTER
-&kp  LSHFT &kp  Z          &kp  X          &tdQu    &kp  V   &kp  B        &mo  5                    &mo  9      &kp  N        &kp  M   &kp  COMMA    &kp  DOT        &kp  SLASH      &kp  RSHFT
-&kp  LCTRL &meta LGUI LALT &meta LALT LCMD &mo  9   &mo  3   &kp  SPACE    &mo  2                    &mo  3      &kp  SPACE    &mo  2   &mo  5        &meta RALT RCMD &meta RGUI RALT &kp  RCTRL
+&kp  ESC         &kp  Z    &kp  M       &kp  L             &kp  C   &kp  P                                              &kp  X        &kp  F   &kp  O           &kp  U     &kp  J       &kp  BSPC
+&kp  TAB         &kp  S    &kp  T       &kp  R             &kp  D   &kp  Y                                              &kp  DOT      &kp  N   &kp  A           &kp  E     &kp  I       &kp  ENTER
+&meta LCTRL LCMD &kp  V    &kp  K       &tdQu              &kp  G   &kp  W                                              &kp  B        &kp  H   &kp  SEMI        &kp  APOS  &kp  COMMA   &meta RCTRL RCMD
+                           &tdMediaSys  &meta LCTRL LCMD   &tdFnNum &kp  LSHIFT   &tdNavSym                 &tdSymNav   &kp  SPACE    &tdNumFn &meta RCTRL RCMD &tdMediaSys
             >;
         };
 
@@ -154,11 +154,11 @@
 /* Symbols
 	Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
 	┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-	│  ` ~   │    ^   │    &   │   #    │   $    │   (    │                                                    │   )    │   !    │   *    │   %    │    @   │        │
+	│        │    ^   │    $   │    #   │   &    │   (    │                                                    │   )    │   %    │   *    │   !    │    @   │        │
 	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-	│        │    /   │    |   │   _    │   +    │   {    │                                                    │   }    │   "    │   <    │   >    │   ?    │        │
+	│        │   ` ~  │    |   │    _   │   +    │   {    │                                                    │   }    │   /    │   <    │   >    │   ?    │        │
 	├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-	│        │  ` ~   │    \   │   -    │   =    │   [    │                                                    │   ]    │   .    │   ;    │   '    │   ,    │        │
+	│        │        │    \   │    -   │   =    │   [    │                                                    │   ]    │        │   :    │   "    │        │        │
 	├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
 	│        │        │        │        │        │        │  │        ││        │        │        ││        │  │        │        │        │        │        │        │
 	└────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
