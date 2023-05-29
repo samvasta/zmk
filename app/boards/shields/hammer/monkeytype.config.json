@@ -27,9 +27,7 @@
   "words": 50,
   "time": 30,
   "mode": "time",
-  "quoteLength": [
-    1
-  ],
+  "quoteLength": [1],
   "language": "english",
   "fontSize": 1.5,
   "freedomMode": false,
@@ -88,13 +86,7 @@
   "oppositeShiftMode": "off",
   "customBackground": "",
   "customBackgroundSize": "cover",
-  "customBackgroundFilter": [
-    0,
-    1,
-    1,
-    1,
-    1
-  ],
+  "customBackgroundFilter": [0, 1, 1, 1, 1],
   "customLayoutfluid": "qwerty#dvorak#colemak",
   "monkeyPowerLevel": "off",
   "minBurst": "off",

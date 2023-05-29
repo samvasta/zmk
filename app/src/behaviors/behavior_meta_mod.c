@@ -24,16 +24,14 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding *binding,
     uint32_t key = zmk_meta_mode() == 0 ? binding->param1 : binding->param2;
 
     LOG_DBG("position %d keycode 0x%02X", event.position, key);
-    return ZMK_EVENT_RAISE(
-        zmk_keycode_state_changed_from_encoded(key, true, event.timestamp));
+    return ZMK_EVENT_RAISE(zmk_keycode_state_changed_from_encoded(key, true, event.timestamp));
 }
 
 static int on_keymap_binding_released(struct zmk_behavior_binding *binding,
                                       struct zmk_behavior_binding_event event) {
     uint32_t key = zmk_meta_mode() == 0 ? binding->param1 : binding->param2;
     LOG_DBG("position %d keycode 0x%02X", event.position, key);
-    return ZMK_EVENT_RAISE(
-        zmk_keycode_state_changed_from_encoded(key, false, event.timestamp));
+    return ZMK_EVENT_RAISE(zmk_keycode_state_changed_from_encoded(key, false, event.timestamp));
 }
 
 static const struct behavior_driver_api behavior_meta_mod_driver_api = {

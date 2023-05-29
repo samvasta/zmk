@@ -5,19 +5,19 @@
  */
 
 / {
-	behaviors {
-		/omit-if-no-ref/ meta: behavior_meta_mod {
-			compatible = "zmk,behavior-meta-mod";
-			label = "META_MOD_KEY";
-			#binding-cells = <2>;
-			bindings = <&kp>, <&kp>;
-		};
+    behaviors {
+        /omit-if-no-ref/ meta: behavior_meta_mod {
+            compatible = "zmk,behavior-meta-mod";
+            label = "META_MOD_KEY";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+        };
 
-		/omit-if-no-ref/ metaset: behavior_set_meta_mod {
-			compatible = "zmk,behavior-meta-mod-set";
-			label = "META_MOD_SET";
-			#binding-cells = <1>;
-		};
-		
-	};
+        /omit-if-no-ref/ metaset: behavior_set_meta_mod {
+            compatible = "zmk,behavior-meta-mod-set";
+            label = "META_MOD_SET";
+            #binding-cells = <1>;
+        };
+
+    };
 };

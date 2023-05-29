@@ -23,10 +23,8 @@
 static uint8_t meta;
 
 int zmk_meta_set(uint8_t value) {
-  meta = value;
-  return 0;
+    meta = value;
+    return 0;
 };
 
-int zmk_meta_mode() {
-  return meta;
-};
+int zmk_meta_mode() { return meta; };

@@ -1,16 +1,16 @@
 if SHIELD_HAMMER_LEFT
 
 config ZMK_KEYBOARD_NAME
-	default "hammer"
+    default "hammer"
 
 config ZMK_SPLIT_ROLE_CENTRAL
-	default y
+    default y
 
 endif
 
 if SHIELD_HAMMER_LEFT || SHIELD_HAMMER_RIGHT
 
 config ZMK_SPLIT
-	default y
+    default y
 
 endif
