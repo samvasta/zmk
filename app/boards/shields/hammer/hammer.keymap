@@ -68,7 +68,7 @@
             label = "TAP_DANCE_QU";
             #binding-cells = <0>;
             tapping-term-ms = <500>;
-            bindings = <&qu>, <&kp q>;    //hold = media, tap+hold = system
+            bindings = <&qu>, <&kp Q>;    //hold = media, tap+hold = system
         };
     };
 
@@ -95,132 +95,132 @@
             >;
         };
 
-        navigation {  // 2
-/* Navigation
-    ┌────────┬─────────┬─────────┬─────────┬─────────┬─────────┐                                                    ┌────────┬─────────┬─────────┬─────────┬─────────┬────────┐
-    │        │ shift+` │backspace│   UP    │   DEL   │ctl/alt+K│                                                    │        │   HOME  │         │         │scrnshot │        │
-    ├────────┼─────────┼─────────┼─────────┼─────────┼─────────┤                                                    ├────────┼─────────┼─────────┼─────────┼─────────┼────────┤
-    │        |shift+tab│   left  │  down   │  right  │ctl/alt+J|                                                    │        │   END   │ alt/cmd │ctrl/alt │         │        │
-    ├────────┼─────────┼─────────┼─────────┼─────────┼─────────┤                                                    ├────────┼─────────┼─────────┼─────────┼─────────┼────────┤
-    │        │         │   CUT   │  COPY   │  PASTE  │         │                                                    │        │         │         │         │         │        │
-    └────────┴─────────┼─────────┼─────────┼─────────┼─────────┤  ┌────────┐                            ┌────────┐  ├────────┼─────────┼─────────┼─────────┼─────────┴────────┘
-                       │Media/Sys│ctrl/cmd │Func/num │  Shift  │  │Nav./sym│                            │Sym/nav.│  │  Space │Num/func │ctrl/cmd |Media/sys│
-                       └─────────┴─────────┴─────────┴─────────┘  └────────┘                            └────────┘  └────────┴─────────┴─────────┴─────────┘
- */
-                        bindings = <
-&trans   &kp LS(GRAVE)  &kp BSPC           &kp UP             &kp DEL            &meta LC(K) LA(K)                                  &none   &kp HOME &none            &none            &meta PSCRN LC(LG(LS(N4)))  &trans
-&trans   &kp  LS(TAB)   &kp LEFT           &kp DOWN           &kp RIGHT          &meta LC(J) LA(J)                                  &none   &kp END  &meta LALT LGUI  &meta LCTL LALT  &none                       &trans
-&trans   &none          &meta LC(X) LG(X)  &meta LC(C) LG(C)  &meta LC(V) LG(V)  &none                                              &none   &none    &none            &none            &none                       &trans
-                        &trans             &trans             &trans             &trans              &trans                 &trans  &trans  &trans   &trans           &trans
-            >;
-        };
+//         navigation {  // 2
+// /* Navigation
+//     ┌────────┬─────────┬─────────┬─────────┬─────────┬─────────┐                                                    ┌────────┬─────────┬─────────┬─────────┬─────────┬────────┐
+//     │        │ shift+` │backspace│   UP    │   DEL   │ctl/alt+K│                                                    │        │   HOME  │         │         │scrnshot │        │
+//     ├────────┼─────────┼─────────┼─────────┼─────────┼─────────┤                                                    ├────────┼─────────┼─────────┼─────────┼─────────┼────────┤
+//     │        |shift+tab│   left  │  down   │  right  │ctl/alt+J|                                                    │        │   END   │ alt/cmd │ctrl/alt │         │        │
+//     ├────────┼─────────┼─────────┼─────────┼─────────┼─────────┤                                                    ├────────┼─────────┼─────────┼─────────┼─────────┼────────┤
+//     │        │         │   CUT   │  COPY   │  PASTE  │         │                                                    │        │         │         │         │         │        │
+//     └────────┴─────────┼─────────┼─────────┼─────────┼─────────┤  ┌────────┐                            ┌────────┐  ├────────┼─────────┼─────────┼─────────┼─────────┴────────┘
+//                        │Media/Sys│ctrl/cmd │Func/num │  Shift  │  │Nav./sym│                            │Sym/nav.│  │  Space │Num/func │ctrl/cmd |Media/sys│
+//                        └─────────┴─────────┴─────────┴─────────┘  └────────┘                            └────────┘  └────────┴─────────┴─────────┴─────────┘
+//  */
+//                         bindings = <
+// &trans   &kp LS(GRAVE)  &kp BSPC           &kp UP             &kp DEL            &meta LC(K) LA(K)                                  &none   &kp HOME &none            &none            &meta PSCRN LC(LG(LS(N4)))  &trans
+// &trans   &kp  LS(TAB)   &kp LEFT           &kp DOWN           &kp RIGHT          &meta LC(J) LA(J)                                  &none   &kp END  &meta LALT LGUI  &meta LCTL LALT  &none                       &trans
+// &trans   &none          &meta LC(X) LG(X)  &meta LC(C) LG(C)  &meta LC(V) LG(V)  &none                                              &none   &none    &none            &none            &none                       &trans
+//                         &trans             &trans             &trans             &trans              &trans                 &trans  &trans  &trans   &trans           &trans
+//             >;
+//         };
 
-        symbols {  // 3
-/* Symbols
-    Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
-    ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-    │        │    ^   │    &   │    %   │   !    │   (    │                                                    │   )    │   /    │   #    │   @    │   ~    │        │
-    ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │    .   │    |   │    *   │   +    │   {    │                                                    │   }    │   `    │   <    │   >    │   ?    │        │
-    ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │    $   │    _   │    -   │   =    │   [    │                                                    │   ]    │   \    │   :    │   "    │   ,    │        │
-    └────────┴────────┼────────┼────────┼────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼────────┼────────┼────────┼────────┴────────┘
-                      │        │        │        │        │  │        │                            │        │  │        │        │        │        │
-                      └────────┴────────┴────────┴────────┘  └────────┘                            └────────┘  └────────┴────────┴────────┴────────┘
- */
-                        bindings = <
-&trans   &kp CARET  &kp AMPS   &kp PERCENT  &kp EXCL   &kp LPAR                                 &kp RPAR  &kp SLASH  &kp POUND  &kp AT     &kp TILDE  &trans
-&trans   &kp DOT    &kp PIPE   &kp ASTRK    &kp PLUS   &kp LBRC                                 &kp RBRC  &kp GRAVE  &kp LT     &kp GT     &kp QMARK  &trans
-&trans   &kp DOLLAR &kp UNDER  &kp MINUS    &kp EQUAL  &kp LBKT                                 &kp RBKT  &kp BSLH   &kp COLON  &kp QUOT   &kp COMMA  &trans
-                    &trans     &trans       &trans     &trans    &trans                 &trans  &trans    &trans     &trans     &trans
-            >;
-        };
+//         symbols {  // 3
+// /* Symbols
+//     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
+//     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
+//     │        │    ^   │    &   │    %   │   !    │   (    │                                                    │   )    │   /    │   #    │   @    │   ~    │        │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │        │    .   │    |   │    *   │   +    │   {    │                                                    │   }    │   `    │   <    │   >    │   ?    │        │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │        │    $   │    _   │    -   │   =    │   [    │                                                    │   ]    │   \    │   :    │   "    │   ,    │        │
+//     └────────┴────────┼────────┼────────┼────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼────────┼────────┼────────┼────────┴────────┘
+//                       │        │        │        │        │  │        │                            │        │  │        │        │        │        │
+//                       └────────┴────────┴────────┴────────┘  └────────┘                            └────────┘  └────────┴────────┴────────┴────────┘
+//  */
+//                         bindings = <
+// &trans   &kp CARET  &kp AMPS   &kp PERCENT  &kp EXCL   &kp LPAR                                 &kp RPAR  &kp SLASH  &kp POUND  &kp AT     &kp TILDE  &trans
+// &trans   &kp DOT    &kp PIPE   &kp ASTRK    &kp PLUS   &kp LBRC                                 &kp RBRC  &kp GRAVE  &kp LT     &kp GT     &kp QMARK  &trans
+// &trans   &kp DOLLAR &kp UNDER  &kp MINUS    &kp EQUAL  &kp LBKT                                 &kp RBKT  &kp BSLH   &kp COLON  &kp QUOT   &kp COMMA  &trans
+//                     &trans     &trans       &trans     &trans    &trans                 &trans  &trans    &trans     &trans     &trans
+//             >;
+//         };
 
-        functions {  // 4
-/* ? / F Keys
-    Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
-    ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-    │        │   F1   │   F2   │   F3   │   F4   │ XXXXXX │                                                    │ XXXXXX │   F1   │   F2   │   F3   │   F4   │        │
-    ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │   F5   │   F6   │   F7   │   F8   │ XXXXXX │                                                    │ XXXXXX │   F5   │   F6   │   F7   │   F8   │        │
-    ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │   F9   │   F10  │   F11  │   F12  │ XXXXXX │                                                    │ XXXXXX │   F9   │   F10  │   F11  │   F12  │        │
-    └────────┴────────┼────────┼────────┼────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼────────┼────────┼────────┼────────┴────────┘
-                      │        │        │        │        │  │        │                            │        │  │        │        │        │        │
-                      └────────┴────────┴────────┴────────┘  └────────┘                            └────────┘  └────────┴────────┴────────┴────────┘
+//         functions {  // 4
+// /* ? / F Keys
+//     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
+//     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
+//     │        │   F1   │   F2   │   F3   │   F4   │ XXXXXX │                                                    │ XXXXXX │   F1   │   F2   │   F3   │   F4   │        │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │        │   F5   │   F6   │   F7   │   F8   │ XXXXXX │                                                    │ XXXXXX │   F5   │   F6   │   F7   │   F8   │        │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │        │   F9   │   F10  │   F11  │   F12  │ XXXXXX │                                                    │ XXXXXX │   F9   │   F10  │   F11  │   F12  │        │
+//     └────────┴────────┼────────┼────────┼────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼────────┼────────┼────────┼────────┴────────┘
+//                       │        │        │        │        │  │        │                            │        │  │        │        │        │        │
+//                       └────────┴────────┴────────┴────────┘  └────────┘                            └────────┘  └────────┴────────┴────────┴────────┘
 
- */
-                        bindings = <
-&trans    &kp F1   &kp F2    &kp F3   &kp F4   &none                                         &none        &kp F1  &kp F2   &kp F3    &kp F4   &none
-&trans    &kp F5   &kp F6    &kp F7   &kp F8   &none                                         &none        &kp F5  &kp F6   &kp F7    &kp F8   &none
-&trans    &kp F9   &kp F10   &kp F11  &kp F12  &none     &trans                 &trans       &none        &kp F9  &kp F10  &kp F11   &kp F12  &none
-                   &trans    &trans   &trans   &trans    &trans                 &trans       &trans       &trans  &trans   &trans
-           >;
-        };
+//  */
+//                         bindings = <
+// &trans    &kp F1   &kp F2    &kp F3   &kp F4   &none                                         &none        &kp F1  &kp F2   &kp F3    &kp F4   &none
+// &trans    &kp F5   &kp F6    &kp F7   &kp F8   &none                                         &none        &kp F5  &kp F6   &kp F7    &kp F8   &none
+// &trans    &kp F9   &kp F10   &kp F11  &kp F12  &none     &trans                 &trans       &none        &kp F9  &kp F10  &kp F11   &kp F12  &none
+//                    &trans    &trans   &trans   &trans    &trans                 &trans       &trans       &trans  &trans   &trans
+//            >;
+//         };
 
-        numbers {  // 5
-/* ? / Numpad
-    Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
-    ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-    │        │    ^   │    &   │    %   │   !    │   (    │                                                    │ NUM 0  │ NUM 1  │ NUM 2  │ NUM 3  │ NUM 4  │ NUM 5  │
-    ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │    .   │    |   │    *   │   +    │   {    │                                                    │   x    │ NUM 6  │ NUM 7  │ NUM 8  │ NUM 9  │    A   │
-    ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │    $   │    _   │    -   │   =    │   [    │                                                    │   #    │    B   │    C   │    D   │   E    │    F   │
-    └────────┴────────┼────────┼────────┼────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼────────┼────────┼────────┼────────┴────────┘
-                      │        │        │        │        │  │        │                            │        │  │        │        │        │        │
-                      └────────┴────────┴────────┴────────┘  └────────┘                            └────────┘  └────────┴────────┴────────┴────────┘
+//         numbers {  // 5
+// /* ? / Numpad
+//     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
+//     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
+//     │        │    ^   │    &   │    %   │   !    │   (    │                                                    │ NUM 0  │ NUM 1  │ NUM 2  │ NUM 3  │ NUM 4  │ NUM 5  │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │        │    .   │    |   │    *   │   +    │   {    │                                                    │   x    │ NUM 6  │ NUM 7  │ NUM 8  │ NUM 9  │    A   │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │        │    $   │    _   │    -   │   =    │   [    │                                                    │   #    │    B   │    C   │    D   │   E    │    F   │
+//     └────────┴────────┼────────┼────────┼────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼────────┼────────┼────────┼────────┴────────┘
+//                       │        │        │        │        │  │        │                            │        │  │        │        │        │        │
+//                       └────────┴────────┴────────┴────────┘  └────────┘                            └────────┘  └────────┴────────┴────────┴────────┘
 
- */
-                        bindings = <
-&trans   &kp CARET  &kp AMPS   &kp PERCENT  &kp EXCL   &kp LPAR                              &kp N0     &kp N1   &kp N2   &kp N3   &kp N4   &kp N5
-&trans   &kp DOT    &kp PIPE   &kp ASTRK    &kp PLUS   &kp LBRC                              &kp X      &kp N6   &kp N7   &kp N8   &kp N9   &kp A
-&trans   &kp DOLLAR &kp UNDER  &kp MINUS    &kp EQUAL  &kp LBKT                              &kp POUND  &kp B    &kp C    &kp D    &kp E    &kp F
-                    &trans     &trans       &trans     &trans    &trans              &trans  &trans     &trans   &trans   &trans
-            >;
-        };
+//  */
+//                         bindings = <
+// &trans   &kp CARET  &kp AMPS   &kp PERCENT  &kp EXCL   &kp LPAR                              &kp N0     &kp N1   &kp N2   &kp N3   &kp N4   &kp N5
+// &trans   &kp DOT    &kp PIPE   &kp ASTRK    &kp PLUS   &kp LBRC                              &kp X      &kp N6   &kp N7   &kp N8   &kp N9   &kp A
+// &trans   &kp DOLLAR &kp UNDER  &kp MINUS    &kp EQUAL  &kp LBKT                              &kp POUND  &kp B    &kp C    &kp D    &kp E    &kp F
+//                     &trans     &trans       &trans     &trans    &trans              &trans  &trans     &trans   &trans   &trans
+//             >;
+//         };
 
-        media {  // 6
-/* Media / Media
-    Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
-    ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-    │ VOL-   │  VOL+  │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ VOL-   │  VOL+  │
-    ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │  MUTE  │   > || │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │  MUTE  │   > || │
-    ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │  <<    │  >>    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │  <<    │  >>    │
-    └────────┴────────┼────────┼────────┼────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼────────┼────────┼────────┼────────┴────────┘
-                      │        │        │        │        │  │        │                            │        │  │        │        │        │        │
-                      └────────┴────────┴────────┴────────┘  └────────┘                            └────────┘  └────────┴────────┴────────┴────────┘
- */
-                        bindings = <
-&kp C_VOL_DN  &kp VOL_UP   &none   &none   &none   &none                                         &none   &none   &none   &none   &kp C_VOL_DN  &kp C_VOL_UP
-&kp C_MUTE    &kp C_PP     &none   &none   &none   &none                                         &none   &none   &none   &none   &kp C_MUT     &kp C_PP
-&kp C_PREV    &kp C_NEXT   &none   &none   &none   &none                                         &none   &none   &none   &none   &kp C_PREV    &kp C_NEXT
-                           &trans  &trans  &trans  &trans    &trans                 &trans       &trans  &trans  &trans  &trans
-            >;
-        };
+//         media {  // 6
+// /* Media / Media
+//     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
+//     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
+//     │ VOL-   │  VOL+  │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ VOL-   │  VOL+  │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │  MUTE  │   > || │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │  MUTE  │   > || │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │  <<    │  >>    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │  <<    │  >>    │
+//     └────────┴────────┼────────┼────────┼────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼────────┼────────┼────────┼────────┴────────┘
+//                       │        │        │        │        │  │        │                            │        │  │        │        │        │        │
+//                       └────────┴────────┴────────┴────────┘  └────────┘                            └────────┘  └────────┴────────┴────────┴────────┘
+//  */
+//                         bindings = <
+// &kp C_VOL_DN  &kp C_VOL_UP &none   &none   &none   &none                                         &none   &none   &none   &none   &kp C_VOL_DN  &kp C_VOL_UP
+// &kp C_MUTE    &kp C_PP     &none   &none   &none   &none                                         &none   &none   &none   &none   &kp C_MUTE    &kp C_PP
+// &kp C_PREV    &kp C_NEXT   &none   &none   &none   &none                                         &none   &none   &none   &none   &kp C_PREV    &kp C_NEXT
+//                            &trans  &trans  &trans  &trans    &trans                 &trans       &trans  &trans  &trans  &trans
+//             >;
+//         };
 
 
-        system {  // 7
-/* Bluetooth
-    Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
-    ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-    │ BT CLR │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │  BT 1  │  BT 2  │  BT 3  │  BT 4  │  BT 5  │ XXXXXX │
-    ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │ XXXXXX │ XXXXXX │TOG BASE│ win/lin│  osx   │ XXXXXX │                                                    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │
-    ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │
-    └────────┴────────┼────────┼────────┼────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼────────┼────────┼────────┼────────┴────────┘
-                      │        │        │        │        │  │        │                            │        │  │        │        │        │        │
-                      └────────┴────────┴────────┴────────┘  └────────┘                            └────────┘  └────────┴────────┴────────┴────────┘
- */
-                        bindings = <
-&bt BT_CLR &none        &none        &none           &none        &none                                         &pair_lin    &pair_mac    &bt BT_SEL 2 &bt BT_SEL 3   &bt BT_SEL 4    &none
-&trans     &none        &tog 1       &metaset 0      &metaset 1   &none                                         &none        &none        &none        &none          &none           &none
-&trans     &none        &none        &none           &none        &none       &trans                 &trans     &none        &none        &none        &none          &none           &none
-&trans     &trans       &trans       &trans          &trans       &trans      &trans                 &trans     &trans       &trans       &trans       &trans         &trans          &trans
-            >;
-        };
+//         system {  // 7
+// /* Bluetooth
+//     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
+//     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
+//     │ BT CLR │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │  BT 1  │  BT 2  │  BT 3  │  BT 4  │  BT 5  │ XXXXXX │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │ XXXXXX │ XXXXXX │TOG BASE│ win/lin│  osx   │ XXXXXX │                                                    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │
+//     └────────┴────────┼────────┼────────┼────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼────────┼────────┼────────┼────────┴────────┘
+//                       │        │        │        │        │  │        │                            │        │  │        │        │        │        │
+//                       └────────┴────────┴────────┴────────┘  └────────┘                            └────────┘  └────────┴────────┴────────┴────────┘
+//  */
+//                         bindings = <
+// &bt BT_CLR &none        &none        &none           &none        &none                                         &pair_lin    &pair_mac    &bt BT_SEL 2 &bt BT_SEL 3   &bt BT_SEL 4    &none
+// &trans     &none        &tog 1       &metaset 0      &metaset 1   &none                                         &none        &none        &none        &none          &none           &none
+// &trans     &none        &none        &none           &none        &none       &trans                 &trans     &none        &none        &none        &none          &none           &none
+// &trans     &trans       &trans       &trans          &trans       &trans      &trans                 &trans     &trans       &trans       &trans       &trans         &trans          &trans
+//             >;
+//         };
     };
 };
