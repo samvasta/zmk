@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include <device.h>
-#include <init.h>
+#include <zephyr/device.h>
+#include <zephyr/init.h>
 
 #include <errno.h>
 #include <math.h>
@@ -14,7 +14,7 @@
 
 #if IS_ENABLED(CONFIG_SETTINGS)
 
-#include <settings/settings.h>
+#include <zephyr/settings/settings.h>
 
 #endif
 
