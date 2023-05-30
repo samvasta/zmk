@@ -6,58 +6,58 @@
 #include <dt-bindings/zmk/ext_power.h>
 
 / {
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        // NONE (0, 0000) is non-conditional
-        // A (1, 1000) is non-conditional
-        // B (2, 0100) is non-conditional
-        ab {     // 1100
-            if-layers = <2 3>;
-            then-layer = <4>;
-        };
-        // C (4, 0010) is non-conditional
-        ac {    // 1010
-            if-layers = <2 5>;
-            then-layer = <6>;
-        };
-        bc {    // 0110
-            if-layers = <3 5>;
-            then-layer = <7>;
-        };
-        abc {   // 1110
-            if-layers = <2 3 5>;
-            then-layer = <8>;
-        };
-        // D (8, 0001) is non-conditional
-        ad {    // 1001
-            if-layers = <2 9>;
-            then-layer = <10>;
-        };
-        bd {    // 0101
-            if-layers = <3 9>;
-            then-layer = <11>;
-        };
-        abd {   // 1101
-            if-layers = <2 3 9>;
-            then-layer = <12>;
-        };
-        cd {    // 0011
-            if-layers = <5 9>;
-            then-layer = <13>;
-        };
-        acd {   // 1011
-            if-layers = <2 5 9>;
-            then-layer = <14>;
-        };
-        bcd {   // 0111
-            if-layers = <3 5 9>;
-            then-layer = <15>;
-        };
-        abcd {  // 1111
-            if-layers = <2 3 5 9>;
-            then-layer = <16>;
-        };
-    };
+    // conditional_layers {
+    //     compatible = "zmk,conditional-layers";
+    //     // NONE (0, 0000) is non-conditional
+    //     // A (1, 1000) is non-conditional
+    //     // B (2, 0100) is non-conditional
+    //     ab {     // 1100
+    //         if-layers = <2 3>;
+    //         then-layer = <4>;
+    //     };
+    //     // C (4, 0010) is non-conditional
+    //     ac {    // 1010
+    //         if-layers = <2 5>;
+    //         then-layer = <6>;
+    //     };
+    //     bc {    // 0110
+    //         if-layers = <3 5>;
+    //         then-layer = <7>;
+    //     };
+    //     abc {   // 1110
+    //         if-layers = <2 3 5>;
+    //         then-layer = <8>;
+    //     };
+    //     // D (8, 0001) is non-conditional
+    //     ad {    // 1001
+    //         if-layers = <2 9>;
+    //         then-layer = <10>;
+    //     };
+    //     bd {    // 0101
+    //         if-layers = <3 9>;
+    //         then-layer = <11>;
+    //     };
+    //     abd {   // 1101
+    //         if-layers = <2 3 9>;
+    //         then-layer = <12>;
+    //     };
+    //     cd {    // 0011
+    //         if-layers = <5 9>;
+    //         then-layer = <13>;
+    //     };
+    //     acd {   // 1011
+    //         if-layers = <2 5 9>;
+    //         then-layer = <14>;
+    //     };
+    //     bcd {   // 0111
+    //         if-layers = <3 5 9>;
+    //         then-layer = <15>;
+    //     };
+    //     abcd {  // 1111
+    //         if-layers = <2 3 5 9>;
+    //         then-layer = <16>;
+    //     };
+    // };
 
      macros {
         pair_mac: pair_mac {
@@ -72,11 +72,25 @@
             #binding-cells = <0>;
             bindings = <&bt BT_SEL 0>, <&metaset 0>, <&ext_power EP_OFF> ;
         };
-        qu: qu {
-            label = "Qu";
+        quLower: quLower {
+            label = "QuLower";
             compatible = "zmk,behavior-macro";
+            wait-ms = <15>;
+            tap-ms = <15>;
             #binding-cells = <0>;
-            bindings = <&macro_tap &kp Q &kp U> ;
+            bindings = <&kp Q>,
+                       <&kp U>;
+        };
+        quCapital: quCapital {
+            label = "QuCaptital";
+            compatible = "zmk,behavior-macro";
+            wait-ms = <35>;
+            tap-ms = <25>;
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LSHFT>,
+                       <&macro_tap &kp Q>,
+                       <&macro_release &kp LSHFT>,
+                       <&macro_tap &kp U>;
         };
     };
 
@@ -87,42 +101,49 @@
             label = "TAP_DANCE_NAV_SYM";
             #binding-cells = <0>;
             tapping-term-ms = <500>;
-            bindings = <&mo 2>, <&mo 3>;    //hold = navigation, tap+hold = symbols
+            bindings = <&mo 1>, <&mo 2>;    //hold = navigation, tap+hold = symbols
         };
         tdSymNav: tap_dance_sym_nav {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_SYM_NAV";
             #binding-cells = <0>;
             tapping-term-ms = <500>;
-            bindings = <&mo 3>, <&mo 2>;    //hold = symbols, tap+hold = navigation
+            bindings = <&mo 2>, <&mo 1>;    //hold = symbols, tap+hold = navigation
         };
         tdFnNum: tap_dance_fn_num {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_FN_NUM";
             #binding-cells = <0>;
             tapping-term-ms = <500>;
-            bindings = <&mo 4>, <&mo 5>;    //hold = functions, tap+hold = numbers
+            bindings = <&mo 3>, <&mo 4>;    //hold = functions, tap+hold = numbers
         };
         tdNumFn: tap_dance_num_fn {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_NUM_FN";
             #binding-cells = <0>;
             tapping-term-ms = <500>;
-            bindings = <&mo 5>, <&mo 4>;    //hold = numbers, tap+hold = functions
+            bindings = <&mo 4>, <&mo 3>;    //hold = numbers, tap+hold = functions
         };
         tdMediaSys: tap_dance_media_sys {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_MEDIA_SYS";
             #binding-cells = <0>;
             tapping-term-ms = <500>;
-            bindings = <&mo 6>, <&mo 7>;    //hold = media, tap+hold = system
+            bindings = <&mo 5>, <&mo 6>;    //hold = media, tap+hold = system
+        };
+        qu: qu {
+            compatible = "zmk,behavior-mod-morph";
+            label = "QU";
+            #binding-cells = <0>;
+            bindings = <&quLower>, <&quCapital>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
         tdQu: tap_dance_qu {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_QU";
             #binding-cells = <0>;
-            tapping-term-ms = <500>;
-            bindings = <&qu>, <&kp Q>;    //hold = media, tap+hold = system
+            tapping-term-ms = <140>;
+            bindings = <&qu>, <&kp Q>;
         };
     };
 
@@ -144,15 +165,15 @@
 
  */
                         bindings = <
-&kp  ESC   &kp  Q          &kp  G          &kp  M   &kp  L   &kp  W                                              &kp  Y        &kp  F   &kp  U        &kp  B          &kp  SEMI       &kp  BSPC
-&kp  TAB   &kp  D          &kp  S          &kp  T   &kp  N   &kp  R                                              &kp  I        &kp  A   &kp  E        &kp  O          &kp  H          &kp  ENTER
-&meta LALT LCMD &kp  Z          &kp  X          &kp  C   &kp  V   &kp  J        &mo  5                    &mo  9      &kp  K        &kp  P   &kp  COMMA    &kp  DOT        &kp  SLASH      &meta RALT RCMD
-&kp  LCTRL &meta LGUI LALT &tdMediaSys  &meta LCTRL LCMD   &tdFnNum &kp  LSHIFT   &tdNavSym                 &tdSymNav   &kp  SPACE    &tdNumFn &meta RCTRL RCMD &tdMediaSys &meta RGUI RALT &kp  RCTRL
+&kp  ESC        &tdQu            &kp  G       &kp  M            &kp  L    &kp  W                                               &kp  Y        &kp  F   &kp  U           &kp  B        &kp  SEMI       &kp  BSPC
+&kp  TAB        &kp  D           &kp  S       &kp  T            &kp  N    &kp  R                                               &kp  I        &kp  A   &kp  E           &kp  O        &kp  H          &kp  ENTER
+&meta LALT LCMD &kp  Z           &kp  X       &kp  C            &kp  V    &kp  J        &mo  5                     &mo  9      &kp  K        &kp  P   &kp  COMMA       &kp  DOT      &kp  SLASH      &meta RALT RCMD
+&kp  LCTRL      &meta LGUI LALT  &tdMediaSys  &meta LCTRL LCMD  &tdNumFn  &kp  LSHIFT   &tdNavSym                  &tdSymNav   &kp  SPACE    &tdFnNum &meta RCTRL RCMD &tdMediaSys   &meta RGUI RALT &kp  RCTRL
             >;
         };
 
 
-        navigation {  // 2
+        navigation {  // 1
 /* Navigation
     ┌────────┬─────────┬─────────┬─────────┬─────────┬─────────┐                                                    ┌────────┬─────────┬─────────┬─────────┬─────────┬────────┐
     │        │ shift+` │backspace│   UP    │   DEL   │ctl/alt+K│                                                    │        │   HOME  │         │         │scrnshot │        │
@@ -166,13 +187,13 @@
  */
                         bindings = <
 &trans   &kp LS(GRAVE)  &kp BSPC           &kp UP             &kp DEL            &meta LC(K) LA(K)                                  &none   &kp HOME &none            &none            &meta PSCRN LC(LG(LS(N4)))  &trans
-&trans   &kp  LS(TAB)   &kp LEFT           &kp DOWN           &kp RIGHT          &meta LC(J) LA(J)                                  &none   &kp END  &meta LALT LGUI  &meta LCTL LALT  &none                       &trans
+&trans   &kp  LS(TAB)   &kp LEFT           &kp DOWN           &kp RIGHT          &meta LC(J) LA(J)                                  &none   &kp END  &meta LALT LGUI  &meta LCTL LALT  &kp LSHIFT                  &trans
 &trans   &none          &meta LC(X) LG(X)  &meta LC(C) LG(C)  &meta LC(V) LG(V)  &none               &trans                 &trans  &none   &none    &none            &none            &none                       &trans
-&trans   &trans        &trans              &trans             &trans             &trans              &trans                 &trans  &trans  &trans   &trans           &trans           &trans                      &trans
+&trans   &trans         &trans             &trans             &trans             &trans              &trans                 &trans  &trans  &trans   &trans           &trans           &trans                      &trans
             >;
         };
 
-        symbols {  // 3
+        symbols {  // 2
 /* Symbols
     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
@@ -193,7 +214,7 @@
             >;
         };
 
-        functions {  // 4
+        functions {  // 3
 /* ? / F Keys
     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
@@ -215,7 +236,7 @@
            >;
         };
 
-        numbers {  // 5
+        numbers {  // 4
 /* ? / Numpad
     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
@@ -237,7 +258,7 @@
             >;
         };
 
-        media {  // 6
+        media {  // 5
 /* Media / Media
     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
@@ -259,7 +280,7 @@
         };
 
 
-        system {  // 7
+        system {  // 6
 /* Bluetooth
     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
