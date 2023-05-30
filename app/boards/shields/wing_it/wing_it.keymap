@@ -72,6 +72,58 @@
             #binding-cells = <0>;
             bindings = <&bt BT_SEL 0>, <&metaset 0>, <&ext_power EP_OFF> ;
         };
+        qu: qu {
+            label = "Qu";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp Q &kp U> ;
+        };
+    };
+
+
+    behaviors {
+        tdNavSym: tap_dance_nav_sym {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_NAV_SYM";
+            #binding-cells = <0>;
+            tapping-term-ms = <500>;
+            bindings = <&mo 2>, <&mo 3>;    //hold = navigation, tap+hold = symbols
+        };
+        tdSymNav: tap_dance_sym_nav {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_SYM_NAV";
+            #binding-cells = <0>;
+            tapping-term-ms = <500>;
+            bindings = <&mo 3>, <&mo 2>;    //hold = symbols, tap+hold = navigation
+        };
+        tdFnNum: tap_dance_fn_num {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_FN_NUM";
+            #binding-cells = <0>;
+            tapping-term-ms = <500>;
+            bindings = <&mo 4>, <&mo 5>;    //hold = functions, tap+hold = numbers
+        };
+        tdNumFn: tap_dance_num_fn {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_NUM_FN";
+            #binding-cells = <0>;
+            tapping-term-ms = <500>;
+            bindings = <&mo 5>, <&mo 4>;    //hold = numbers, tap+hold = functions
+        };
+        tdMediaSys: tap_dance_media_sys {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_MEDIA_SYS";
+            #binding-cells = <0>;
+            tapping-term-ms = <500>;
+            bindings = <&mo 6>, <&mo 7>;    //hold = media, tap+hold = system
+        };
+        tdQu: tap_dance_qu {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_QU";
+            #binding-cells = <0>;
+            tapping-term-ms = <500>;
+            bindings = <&qu>, <&kp Q>;    //hold = media, tap+hold = system
+        };
     };
 
     keymap {
@@ -94,339 +146,469 @@
                         bindings = <
 &kp  ESC   &kp  Q          &kp  G          &kp  M   &kp  L   &kp  W                                              &kp  Y        &kp  F   &kp  U        &kp  B          &kp  SEMI       &kp  BSPC
 &kp  TAB   &kp  D          &kp  S          &kp  T   &kp  N   &kp  R                                              &kp  I        &kp  A   &kp  E        &kp  O          &kp  H          &kp  ENTER
-&kp  LSHFT &kp  Z          &kp  X          &kp  C   &kp  V   &kp  J        &mo  5                    &mo  9      &kp  K        &kp  P   &kp  COMMA    &kp  DOT        &kp  SLASH      &kp  RSHFT
-&kp  LCTRL &meta LGUI LALT &meta LALT LCMD &mo  9   &mo  3   &kp  SPACE    &mo  2                    &mo  3      &kp  SPACE    &mo  2   &mo  5        &meta RALT RCMD &meta RGUI RALT &kp  RCTRL
+&meta LALT LCMD &kp  Z          &kp  X          &kp  C   &kp  V   &kp  J        &mo  5                    &mo  9      &kp  K        &kp  P   &kp  COMMA    &kp  DOT        &kp  SLASH      &meta RALT RCMD
+&kp  LCTRL &meta LGUI LALT &tdMediaSys  &meta LCTRL LCMD   &tdFnNum &kp  LSHIFT   &tdNavSym                 &tdSymNav   &kp  SPACE    &tdNumFn &meta RCTRL RCMD &tdMediaSys &meta RGUI RALT &kp  RCTRL
             >;
         };
 
 
-        alt_layout {
-/* QWERTY
-    Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
-    ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-    │  ESC   │    Q   │   W    │   E    │   R    │   T    │                                                    │    Y   │   U    │   I    │    O   │   P    │ BKSPC  │
-    ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │  TAB   │    A   │   S    │   D    │   F    │   G    |                                                    │    H   │   J    │   K    │    L   │   ;    │ ENTER  │
-    ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │  SHIFT │    Z   │   X    │   C    │   V    │   B    │                                                    │    N   │   M    │   , <  │  . >   │   / ?  │ R SHFT │
-    ├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │  CTL   │  GUI   │  ALT   │  FN 8  │  FN 2  │  SPACE │  │  FN 1  ││  FN 4  │        │  FN 8  ││  FN 2  │  │ SPACE  │  FN 1  │  FN 4  │  ALT   │  GUI   │  CTL   │
-    └────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
-
+        navigation {  // 2
+/* Navigation
+    ┌────────┬─────────┬─────────┬─────────┬─────────┬─────────┐                                                    ┌────────┬─────────┬─────────┬─────────┬─────────┬────────┐
+    │        │ shift+` │backspace│   UP    │   DEL   │ctl/alt+K│                                                    │        │   HOME  │         │         │scrnshot │        │
+    ├────────┼─────────┼─────────┼─────────┼─────────┼─────────┤                                                    ├────────┼─────────┼─────────┼─────────┼─────────┼────────┤
+    │        |shift+tab│   left  │  down   │  right  │ctl/alt+J|                                                    │        │   END   │ alt/cmd │ctrl/alt │         │        │
+    ├────────┼─────────┼─────────┼─────────┼─────────┼─────────┤                                                    ├────────┼─────────┼─────────┼─────────┼─────────┼────────┤
+    │        │         │   CUT   │  COPY   │  PASTE  │         │                                                    │        │         │         │         │         │        │
+    └────────┴─────────┼─────────┼─────────┼─────────┼─────────┤  ┌────────┐                            ┌────────┐  ├────────┼─────────┼─────────┼─────────┼─────────┴────────┘
+                       │Media/Sys│ctrl/cmd │Func/num │  Shift  │  │Nav./sym│                            │Sym/nav.│  │  Space │Num/func │ctrl/cmd |Media/sys│
+                       └─────────┴─────────┴─────────┴─────────┘  └────────┘                            └────────┘  └────────┴─────────┴─────────┴─────────┘
  */
                         bindings = <
-&kp  ESC   &kp  Q          &kp  W          &kp  E   &kp  R   &kp  T                                              &kp  Y        &kp  U   &kp  I        &kp  O          &kp  P          &kp  BSPC
-&kp  TAB   &kp  A          &kp  S          &kp  D   &kp  F   &kp  G                                              &kp  H        &kp  J   &kp  K        &kp  L          &kp  SEMI       &kp  ENTER
-&kp  LSHFT &kp  Z          &kp  X          &kp  C   &kp  V   &kp  B        &mo  5                    &mo  9      &kp  N        &kp  M   &kp  COMMA    &kp  DOT        &kp  SLASH      &kp  RSHFT
-&kp  LCTRL &meta LGUI LALT &meta LALT LCMD &mo  9   &mo  3   &kp  SPACE    &mo  2                    &mo  3      &kp  SPACE    &mo  2   &mo  5        &meta RALT RCMD &meta RGUI RALT &kp  RCTRL
+&trans   &kp LS(GRAVE)  &kp BSPC           &kp UP             &kp DEL            &meta LC(K) LA(K)                                  &none   &kp HOME &none            &none            &meta PSCRN LC(LG(LS(N4)))  &trans
+&trans   &kp  LS(TAB)   &kp LEFT           &kp DOWN           &kp RIGHT          &meta LC(J) LA(J)                                  &none   &kp END  &meta LALT LGUI  &meta LCTL LALT  &none                       &trans
+&trans   &none          &meta LC(X) LG(X)  &meta LC(C) LG(C)  &meta LC(V) LG(V)  &none               &trans                 &trans  &none   &none    &none            &none            &none                       &trans
+&trans   &trans        &trans              &trans             &trans             &trans              &trans                 &trans  &trans  &trans   &trans           &trans           &trans                      &trans
             >;
         };
 
-        a {  // 2
-/* Text Editing / Navigation
-    Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
-    ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-    │   ESC  │ SHFT+` │  UNDO  │  REDO  │  HOME  │ PG.UP  │                                                    │    K   │ BKSPC  │   UP   │  DEL   │ INSERT │ PRTSCR │
-    ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │SHFT+TAB│ L OPT  │ L CMD  │   END  │ PG.DN  │                                                    │    J   │ LEFT   │  DOWN  │  RIGHT │ XXXXXX │        │
-    ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │ CUT    │  COPY  │ PASTE  │ XXXXXX │        │
-    ├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │        │        │        │        │        │  │        ││        │        │        ││        │  │        │        │        │        │        │        │
-    └────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
- */
-                        bindings = <
-&kp ESC   &kp LS(GRAVE) &meta LC(Z) LG(Z)  &meta LC(Y) LG(Y)  &kp HOME     &kp PG_UP                                     &kp K        &kp BSPC          &kp UP            &kp DEL           &kp INS     &kp PSCRN
-&trans    &kp LS(TAB)   &meta LCTL LALT    &meta LALT LCMD    &kp END      &kp PG_DN                                     &kp J        &kp LEFT          &kp DOWN          &kp RIGHT         &none       &trans
-&trans    &none         &none              &none              &none        &none     &trans                 &trans       &none        &meta LC(X) LG(X) &meta LC(C) LG(C) &meta LC(V) LG(V) &none       &trans
-&trans    &trans        &trans             &trans             &trans       &trans    &trans                 &trans       &trans       &trans            &trans            &trans            &trans      &trans
-            >;
-        };
-
-        b {  // 3
+        symbols {  // 3
 /* Symbols
     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-    │  ` ~   │    !   │    @   │   #    │   $    │   %    │                                                    │   ^    │   &    │   *    │   (    │    )   │        │
+    │        │    ^   │    &   │    %   │   !    │   (    │                                                    │   )    │   /    │   #    │   @    │   ~    │        │
     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │ XXXXXX │    |   │   _    │   +    │   {    │                                                    │   }    │   "    │   <    │   >    │   ?    │        │
+    │        │    .   │    |   │    *   │   +    │   {    │                                                    │   }    │   `    │   <    │   >    │   ?    │        │
     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │ XXXXXX │    \   │   -    │   =    │   [    │                                                    │   ]    │   '    │   ,    │   .    │   /    │        │
-    ├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │        │        │        │        │        │  │        ││        │        │        ││        │  │        │        │        │        │        │        │
-    └────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
+    │        │    $   │    _   │    -   │   =    │   [    │                                                    │   ]    │   \    │   :    │   "    │   ,    │        │
+    └────────┴────────┼────────┼────────┼────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼────────┼────────┼────────┼────────┴────────┘
+                      │        │        │        │        │  │        │                            │        │  │        │        │        │        │
+                      └────────┴────────┴────────┴────────┘  └────────┘                            └────────┘  └────────┴────────┴────────┴────────┘
  */
                         bindings = <
-&kp GRAVE &kp EXCL     &kp AT       &kp POUND    &kp DOLLAR   &kp PERCENT                                   &kp CARET    &kp AMPS     &kp ASTRK    &kp LPAR     &kp RPAR    &trans
-&trans    &none        &kp PIPE     &kp UNDER    &kp PLUS     &kp LBRC                                      &kp RBRC     &kp DQT      &kp LT       &kp GT       &kp QMARK   &trans
-&trans    &none        &kp BSLH     &kp MINUS    &kp EQUAL    &kp LBKT  &trans                 &trans       &kp RBKT     &kp APOS     &kp COMMA    &kp DOT      &kp SLASH   &trans
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+&trans   &kp CARET  &kp AMPS   &kp PERCENT  &kp EXCL   &kp LPAR                                 &kp RPAR  &kp SLASH  &kp POUND  &kp AT     &kp TILDE  &trans
+&trans   &kp DOT    &kp PIPE   &kp ASTRK    &kp PLUS   &kp LBRC                                 &kp RBRC  &kp GRAVE  &kp LT     &kp GT     &kp QMARK  &trans
+&trans   &kp DOLLAR &kp UNDER  &kp MINUS    &kp EQUAL  &kp LBKT  &trans                 &trans  &kp RBKT  &kp BSLH   &kp COLON  &kp QUOT   &kp COMMA  &trans
+&trans   &trans     &trans     &trans       &trans     &trans    &trans                 &trans  &trans    &trans     &trans     &trans     &trans     &trans
             >;
         };
 
-        ab {  // 4
+        functions {  // 4
 /* ? / F Keys
     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-    │        │  F13   │  F14   │  F15   │  F16   │ XXXXXX │                                                    │ XXXXXX │  F1    │  F2    │  F3    │  F4    │    F5  │
+    │        │   F1   │   F2   │   F3   │   F4   │ XXXXXX │                                                    │ XXXXXX │   F1   │   F2   │   F3   │   F4   │        │
     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │  F17   │  F18   │  F19   │  F20   │ XXXXXX │                                                    │ XXXXXX │  F6    │  F7    │  F8    │  F9    │   F10  │
+    │        │   F5   │   F6   │   F7   │   F8   │ XXXXXX │                                                    │ XXXXXX │   F5   │   F6   │   F7   │   F8   │        │
     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │  F21   │  F22   │  F23   │  F24   │ XXXXXX │                                                    │ XXXXXX │  F11   │  F12   │  F13   │  F14   │   F15  │
-    ├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │        │        │        │        │        │  │        ││        │        │        ││        │  │        │        │        │        │        │        │
-    └────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
+    │        │   F9   │   F10  │   F11  │   F12  │ XXXXXX │                                                    │ XXXXXX │   F9   │   F10  │   F11  │   F12  │        │
+    └────────┴────────┼────────┼────────┼────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼────────┼────────┼────────┼────────┴────────┘
+                      │        │        │        │        │  │        │                            │        │  │        │        │        │        │
+                      └────────┴────────┴────────┴────────┘  └────────┘                            └────────┘  └────────┴────────┴────────┴────────┘
 
  */
                         bindings = <
-&trans    &kp F13      &kp F14      &kp F15      &kp F16      &none                                         &none        &kp F1       &kp F2       &kp F3       &kp F4      &none
-&trans    &kp F17      &kp F18      &kp F19      &kp F20      &none                                         &none        &kp F5       &kp F6       &kp F7       &kp F8      &none
-&trans    &kp F21      &kp F22      &kp F23      &kp F24      &none     &trans                 &trans       &none        &kp F9       &kp F10      &kp F11      &kp F12     &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-            >;
+&trans    &kp F1   &kp F2    &kp F3   &kp F4   &none                                         &none        &kp F1  &kp F2   &kp F3    &kp F4   &none
+&trans    &kp F5   &kp F6    &kp F7   &kp F8   &none                                         &none        &kp F5  &kp F6   &kp F7    &kp F8   &none
+&trans    &kp F9   &kp F10   &kp F11  &kp F12  &none     &trans                 &trans       &none        &kp F9  &kp F10  &kp F11   &kp F12  &none
+&trans    &trans   &trans    &trans   &trans   &trans    &trans                 &trans       &trans       &trans  &trans   &trans    &trans   &trans
+           >;
         };
 
-        c {  // 5
+        numbers {  // 5
 /* ? / Numpad
     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-    │        │ xxxxxx │ xxxxxx │ RELOAD │ NEWTAB │ xxxxxx │                                                    │ NUM 0  │ NUM 1  │ NUM 2  │ NUM 3  │ NUM 4  │ NUM 5  │
+    │        │    ^   │    &   │    %   │   !    │   (    │                                                    │ NUM 0  │ NUM 1  │ NUM 2  │ NUM 3  │ NUM 4  │ NUM 5  │
     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │  REDO  │ xxxxxx │ SEL.ALL│  FIND  │ REPLACE│                                                    │   x    │ NUM 6  │ NUM 7  │ NUM 8  │ NUM 9  │    A   │
+    │        │    .   │    |   │    *   │   +    │   {    │                                                    │   x    │ NUM 6  │ NUM 7  │ NUM 8  │ NUM 9  │    A   │
     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │  UNDO  │  CUT   │  COPY  │  PASTE │ xxxxxx │                                                    │   #    │    B   │    C   │    D   │   E    │    F   │
-    ├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │        │        │        │        │        │  │        ││        │        │        ││        │  │        │        │        │        │        │        │
-    └────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
+    │        │    $   │    _   │    -   │   =    │   [    │                                                    │   #    │    B   │    C   │    D   │   E    │    F   │
+    └────────┴────────┼────────┼────────┼────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼────────┼────────┼────────┼────────┴────────┘
+                      │        │        │        │        │  │        │                            │        │  │        │        │        │        │
+                      └────────┴────────┴────────┴────────┘  └────────┘                            └────────┘  └────────┴────────┴────────┴────────┘
 
  */
                         bindings = <
-&trans    &none             &none             &meta LC(R) LG(R) &meta LC(T) LG(T) &none                                              &kp N0       &kp N1       &kp N2       &kp N3       &kp N4      &kp N5
-&trans    &meta LC(Y) LG(Y) &none             &meta LC(A) LG(A) &meta LC(F) LG(F) &meta LC(H) LG(H)                                  &kp X        &kp N6       &kp N7       &kp N8       &kp N9      &kp A
-&trans    &meta LC(Z) LG(Z) &meta LC(X) LG(X) &meta LC(C) LG(C) &meta LC(V) LG(V) &none             &trans                &trans     &kp POUND    &kp B        &kp C        &kp D        &kp E       &kp F
-&trans    &trans            &trans            &trans            &trans            &trans            &trans                &trans     &trans       &trans       &trans       &trans       &trans      &trans
+&trans   &kp CARET  &kp AMPS   &kp PERCENT  &kp EXCL   &kp LPAR                              &kp N0     &kp N1   &kp N2   &kp N3   &kp N4   &kp N5
+&trans   &kp DOT    &kp PIPE   &kp ASTRK    &kp PLUS   &kp LBRC                              &kp X      &kp N6   &kp N7   &kp N8   &kp N9   &kp A
+&trans   &kp DOLLAR &kp UNDER  &kp MINUS    &kp EQUAL  &kp LBKT  &trans              &trans  &kp POUND  &kp B    &kp C    &kp D    &kp E    &kp F
+&trans   &trans     &trans     &trans       &trans     &trans    &trans              &trans  &trans     &trans   &trans   &trans   &trans   &trans
             >;
         };
 
-        ac {  // 6
-/* ?
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-            >;
-        };
-
-        bc {  // 7
-/* ?
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-            >;
-        };
-
-        abc {  // 8
-/* ?
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-            >;
-        };
-
-        d {  // 9
+        media {  // 6
 /* Media / Media
     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-    │        │ VOL-   │  MUTE  │  VOL+  │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │ VOL-   │  MUTE  │  VOL+  │ XXXXXX │ XXXXXX │
+    │ VOL-   │  VOL+  │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ VOL-   │  VOL+  │
     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │  <<    │   > || │  >>    │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │  <<    │   > || │  >>    │ XXXXXX │ XXXXXX │
+    │  MUTE  │   > || │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │  MUTE  │   > || │
     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │
-    ├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │        │        │        │        │        │  │        ││        │        │        ││        │  │        │        │        │        │        │        │
-    └────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
+    │  <<    │  >>    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │  <<    │  >>    │
+    └────────┴────────┼────────┼────────┼────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼────────┼────────┼────────┼────────┴────────┘
+                      │        │        │        │        │  │        │                            │        │  │        │        │        │        │
+                      └────────┴────────┴────────┴────────┘  └────────┘                            └────────┘  └────────┴────────┴────────┴────────┘
  */
                         bindings = <
-&trans    &kp C_VOL_DN &kp C_MUTE   &kp C_VOL_UP &none        &none                                         &none        &kp C_VOL_DN &kp C_MUTE   &kp C_VOL_UP &none       &none
-&trans    &kp C_PREV   &kp C_PP     &kp C_NEXT   &none        &none                                         &none        &kp C_PREV   &kp C_PP     &kp C_NEXT   &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+&kp C_VOL_DN  &kp C_VOL_UP &none   &none   &none   &none                                         &none   &none   &none   &none   &kp C_VOL_DN  &kp C_VOL_UP
+&kp C_MUTE    &kp C_PP     &none   &none   &none   &none                                         &none   &none   &none   &none   &kp C_MUTE    &kp C_PP
+&kp C_PREV    &kp C_NEXT   &none   &none   &none   &none     &trans                      &trans  &none   &none   &none   &none   &kp C_PREV    &kp C_NEXT
+&trans        &trans       &trans  &trans  &trans  &trans    &trans                      &trans  &trans  &trans  &trans   &trans &trans        &trans
             >;
         };
 
-        ad {  // 10
-/* ?
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-            >;
-        };
 
-        bd {  // 11
-/* ?
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-            >;
-        };
-
-        abd {  // 12
-/* ?
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-            >;
-        };
-
-        cd {  // 13
+        system {  // 7
 /* Bluetooth
- * .-----------------------------------------------                                    -----------------------------------------------.
- * | BT Clear |       |      |      |      |      |                                    |  BT 1 | BT 2 | BT 3 | BT 4 | BT 5 |          |
- * |----------+-------+------+------+------+------+                                    +-------+------+------+------+------+----------|
- * |          |       |      |TGL OS|      |      |                                    |       |      |      |      |      |          |
- * |----------+-------+------+------+------+------+                                    +-------+------+------+------+------+----------|
- * |          |       |      |      | BT PREV | BT NEXT |                              |       |      |      |      |      |          |
- * |----------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+----------|
- * |          |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |          |
- * .-------------------------------------------------------------        -------------------------------------------------------------.
+    Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
+    ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
+    │ BT CLR │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │  BT 1  │  BT 2  │  BT 3  │  BT 4  │  BT 5  │ XXXXXX │
+    ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+    │ XXXXXX │ XXXXXX │TOG BASE│ win/lin│  osx   │ XXXXXX │                                                    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │
+    ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │
+    └────────┴────────┼────────┼────────┼────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼────────┼────────┼────────┼────────┴────────┘
+                      │        │        │        │        │  │        │                            │        │  │        │        │        │        │
+                      └────────┴────────┴────────┴────────┘  └────────┘                            └────────┘  └────────┴────────┴────────┴────────┘
  */
                         bindings = <
-&bt BT_CLR &none        &none        &none           &none        &none                                         &pair_lin    &pair_mac    &bt BT_SEL 2 &bt BT_SEL 3       &bt BT_SEL 4      &none
-&trans     &none        &tog 1       &metaset 0      &metaset 1   &none                                         &none        &none        &none        &none              &none             &none
-&trans     &none        &none        &none           &bt BT_PRV   &bt BT_NXT  &trans                 &trans     &none        &none        &none        &ext_power EP_OFF  &ext_power EP_ON  &none
-&trans     &trans       &trans       &trans          &trans       &trans      &trans                 &trans     &trans       &trans       &trans       &trans             &trans            &trans
-            >;
-        };
-
-        acd {  // 14
-/* ?
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-            >;
-        };
-
-        bcd {  // 15
-/* Symbols
- * .--------------------------------------------                                    --------------------------------------------.
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
-            >;
-        };
-
-        abcd {  // 16
-/* Symbols
- * .--------------------------------------------                                    --------------------------------------------.
- * |BOOTLDR|       |      |      |      | RESET|                                    | RESET |      |      |      |      |BOOTLDR|
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
- * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
- * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
- * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
- * .----------------------------------------------------------        ----------------------------------------------------------.
- */
-                        bindings = <
-&bootloader &none        &none        &none        &none        &sys_reset                                    &sys_reset   &none        &none        &none        &none       &bootloader
-&trans      &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
-&trans      &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
-&trans      &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+&bt BT_CLR &none        &none        &none           &none        &none                                         &pair_lin    &pair_mac    &bt BT_SEL 2 &bt BT_SEL 3   &bt BT_SEL 4    &none
+&trans     &none        &tog 1       &metaset 0      &metaset 1   &none                                         &none        &none        &none        &none          &none           &none
+&trans     &none        &none        &none           &none        &none       &trans                 &trans     &none        &none        &none        &none          &none           &none
+&trans     &trans       &trans       &trans          &trans       &trans      &trans                 &trans     &trans       &trans       &trans       &trans         &trans          &trans
             >;
         };
     };
+
+//         alt_layout {
+// /* QWERTY
+//     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
+//     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
+//     │  ESC   │    Q   │   W    │   E    │   R    │   T    │                                                    │    Y   │   U    │   I    │    O   │   P    │ BKSPC  │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │  TAB   │    A   │   S    │   D    │   F    │   G    |                                                    │    H   │   J    │   K    │    L   │   ;    │ ENTER  │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │  SHIFT │    Z   │   X    │   C    │   V    │   B    │                                                    │    N   │   M    │   , <  │  . >   │   / ?  │ R SHFT │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │  CTL   │  GUI   │  ALT   │  FN 8  │  FN 2  │  SPACE │  │  FN 1  ││  FN 4  │        │  FN 8  ││  FN 2  │  │ SPACE  │  FN 1  │  FN 4  │  ALT   │  GUI   │  CTL   │
+//     └────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
+
+//  */
+//                         bindings = <
+// &kp  ESC   &kp  Q          &kp  W          &kp  E   &kp  R   &kp  T                                              &kp  Y        &kp  U   &kp  I        &kp  O          &kp  P          &kp  BSPC
+// &kp  TAB   &kp  A          &kp  S          &kp  D   &kp  F   &kp  G                                              &kp  H        &kp  J   &kp  K        &kp  L          &kp  SEMI       &kp  ENTER
+// &kp  LSHFT &kp  Z          &kp  X          &kp  C   &kp  V   &kp  B        &mo  5                    &mo  9      &kp  N        &kp  M   &kp  COMMA    &kp  DOT        &kp  SLASH      &kp  RSHFT
+// &kp  LCTRL &meta LGUI LALT &meta LALT LCMD &mo  9   &mo  3   &kp  SPACE    &mo  2                    &mo  3      &kp  SPACE    &mo  2   &mo  5        &meta RALT RCMD &meta RGUI RALT &kp  RCTRL
+//             >;
+//         };
+
+
+//         a {  // 2
+// /* Text Editing / Navigation
+//     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
+//     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
+//     │   ESC  │ SHFT+` │  UNDO  │  REDO  │  HOME  │ PG.UP  │                                                    │    K   │ BKSPC  │   UP   │  DEL   │ INSERT │ PRTSCR │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │        │SHFT+TAB│ L OPT  │ L CMD  │   END  │ PG.DN  │                                                    │    J   │ LEFT   │  DOWN  │  RIGHT │ XXXXXX │        │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │        │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │ CUT    │  COPY  │ PASTE  │ XXXXXX │        │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │        │        │        │        │        │        │  │        ││        │        │        ││        │  │        │        │        │        │        │        │
+//     └────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
+//  */
+//                         bindings = <
+// &kp ESC   &kp LS(GRAVE) &meta LC(Z) LG(Z)  &meta LC(Y) LG(Y)  &kp HOME     &kp PG_UP                                     &kp K        &kp BSPC          &kp UP            &kp DEL           &kp INS     &kp PSCRN
+// &trans    &kp LS(TAB)   &meta LCTL LALT    &meta LALT LCMD    &kp END      &kp PG_DN                                     &kp J        &kp LEFT          &kp DOWN          &kp RIGHT         &none       &trans
+// &trans    &none         &none              &none              &none        &none     &trans                 &trans       &none        &meta LC(X) LG(X) &meta LC(C) LG(C) &meta LC(V) LG(V) &none       &trans
+// &trans    &trans        &trans             &trans             &trans       &trans    &trans                 &trans       &trans       &trans            &trans            &trans            &trans      &trans
+//             >;
+//         };
+
+//         b {  // 3
+// /* Symbols
+//     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
+//     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
+//     │  ` ~   │    !   │    @   │   #    │   $    │   %    │                                                    │   ^    │   &    │   *    │   (    │    )   │        │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │        │ XXXXXX │    |   │   _    │   +    │   {    │                                                    │   }    │   "    │   <    │   >    │   ?    │        │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │        │ XXXXXX │    \   │   -    │   =    │   [    │                                                    │   ]    │   '    │   ,    │   .    │   /    │        │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │        │        │        │        │        │        │  │        ││        │        │        ││        │  │        │        │        │        │        │        │
+//     └────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
+//  */
+//                         bindings = <
+// &kp GRAVE &kp EXCL     &kp AT       &kp POUND    &kp DOLLAR   &kp PERCENT                                   &kp CARET    &kp AMPS     &kp ASTRK    &kp LPAR     &kp RPAR    &trans
+// &trans    &none        &kp PIPE     &kp UNDER    &kp PLUS     &kp LBRC                                      &kp RBRC     &kp DQT      &kp LT       &kp GT       &kp QMARK   &trans
+// &trans    &none        &kp BSLH     &kp MINUS    &kp EQUAL    &kp LBKT  &trans                 &trans       &kp RBKT     &kp APOS     &kp COMMA    &kp DOT      &kp SLASH   &trans
+// &trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+//             >;
+//         };
+
+//         ab {  // 4
+// /* ? / F Keys
+//     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
+//     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
+//     │        │  F13   │  F14   │  F15   │  F16   │ XXXXXX │                                                    │ XXXXXX │  F1    │  F2    │  F3    │  F4    │    F5  │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │        │  F17   │  F18   │  F19   │  F20   │ XXXXXX │                                                    │ XXXXXX │  F6    │  F7    │  F8    │  F9    │   F10  │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │        │  F21   │  F22   │  F23   │  F24   │ XXXXXX │                                                    │ XXXXXX │  F11   │  F12   │  F13   │  F14   │   F15  │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │        │        │        │        │        │        │  │        ││        │        │        ││        │  │        │        │        │        │        │        │
+//     └────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
+
+//  */
+//                         bindings = <
+// &trans    &kp F13      &kp F14      &kp F15      &kp F16      &none                                         &none        &kp F1       &kp F2       &kp F3       &kp F4      &none
+// &trans    &kp F17      &kp F18      &kp F19      &kp F20      &none                                         &none        &kp F5       &kp F6       &kp F7       &kp F8      &none
+// &trans    &kp F21      &kp F22      &kp F23      &kp F24      &none     &trans                 &trans       &none        &kp F9       &kp F10      &kp F11      &kp F12     &none
+// &trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+//             >;
+//         };
+
+//         c {  // 5
+// /* ? / Numpad
+//     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
+//     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
+//     │        │ xxxxxx │ xxxxxx │ RELOAD │ NEWTAB │ xxxxxx │                                                    │ NUM 0  │ NUM 1  │ NUM 2  │ NUM 3  │ NUM 4  │ NUM 5  │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │        │  REDO  │ xxxxxx │ SEL.ALL│  FIND  │ REPLACE│                                                    │   x    │ NUM 6  │ NUM 7  │ NUM 8  │ NUM 9  │    A   │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │        │  UNDO  │  CUT   │  COPY  │  PASTE │ xxxxxx │                                                    │   #    │    B   │    C   │    D   │   E    │    F   │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │        │        │        │        │        │        │  │        ││        │        │        ││        │  │        │        │        │        │        │        │
+//     └────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
+
+//  */
+//                         bindings = <
+// &trans    &none             &none             &meta LC(R) LG(R) &meta LC(T) LG(T) &none                                              &kp N0       &kp N1       &kp N2       &kp N3       &kp N4      &kp N5
+// &trans    &meta LC(Y) LG(Y) &none             &meta LC(A) LG(A) &meta LC(F) LG(F) &meta LC(H) LG(H)                                  &kp X        &kp N6       &kp N7       &kp N8       &kp N9      &kp A
+// &trans    &meta LC(Z) LG(Z) &meta LC(X) LG(X) &meta LC(C) LG(C) &meta LC(V) LG(V) &none             &trans                &trans     &kp POUND    &kp B        &kp C        &kp D        &kp E       &kp F
+// &trans    &trans            &trans            &trans            &trans            &trans            &trans                &trans     &trans       &trans       &trans       &trans       &trans      &trans
+//             >;
+//         };
+
+//         ac {  // 6
+// /* ?
+//  * .--------------------------------------------                                    --------------------------------------------.
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+//  * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+//  * .----------------------------------------------------------        ----------------------------------------------------------.
+//  */
+//                         bindings = <
+// &trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+// &trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+// &trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+// &trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+//             >;
+//         };
+
+//         bc {  // 7
+// /* ?
+//  * .--------------------------------------------                                    --------------------------------------------.
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+//  * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+//  * .----------------------------------------------------------        ----------------------------------------------------------.
+//  */
+//                         bindings = <
+// &trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+// &trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+// &trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+// &trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+//             >;
+//         };
+
+//         abc {  // 8
+// /* ?
+//  * .--------------------------------------------                                    --------------------------------------------.
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+//  * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+//  * .----------------------------------------------------------        ----------------------------------------------------------.
+//  */
+//                         bindings = <
+// &trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+// &trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+// &trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+// &trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+//             >;
+//         };
+
+//         d {  // 9
+// /* Media / Media
+//     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
+//     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
+//     │        │ VOL-   │  MUTE  │  VOL+  │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │ VOL-   │  MUTE  │  VOL+  │ XXXXXX │ XXXXXX │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │        │  <<    │   > || │  >>    │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │  <<    │   > || │  >>    │ XXXXXX │ XXXXXX │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │        │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │                                                    │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │ XXXXXX │
+//     ├────────┼────────┼────────┼────────┼────────┼────────┤  ┌────────┐┌────────┐        ┌────────┐┌────────┐  ├────────┼────────┼────────┼────────┼────────┼────────┤
+//     │        │        │        │        │        │        │  │        ││        │        │        ││        │  │        │        │        │        │        │        │
+//     └────────┴────────┴────────┴────────┴────────┴────────┘  └────────┘└────────┘        └────────┘└────────┘  └────────┴────────┴────────┴────────┴────────┴────────┘
+//  */
+//                         bindings = <
+// &trans    &kp C_VOL_DN &kp C_MUTE   &kp C_VOL_UP &none        &none                                         &none        &kp C_VOL_DN &kp C_MUTE   &kp C_VOL_UP &none       &none
+// &trans    &kp C_PREV   &kp C_PP     &kp C_NEXT   &none        &none                                         &none        &kp C_PREV   &kp C_PP     &kp C_NEXT   &none       &none
+// &trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+// &trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+//             >;
+//         };
+
+//         ad {  // 10
+// /* ?
+//  * .--------------------------------------------                                    --------------------------------------------.
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+//  * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+//  * .----------------------------------------------------------        ----------------------------------------------------------.
+//  */
+//                         bindings = <
+// &trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+// &trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+// &trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+// &trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+//             >;
+//         };
+
+//         bd {  // 11
+// /* ?
+//  * .--------------------------------------------                                    --------------------------------------------.
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+//  * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+//  * .----------------------------------------------------------        ----------------------------------------------------------.
+//  */
+//                         bindings = <
+// &trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+// &trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+// &trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+// &trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+//             >;
+//         };
+
+//         abd {  // 12
+// /* ?
+//  * .--------------------------------------------                                    --------------------------------------------.
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+//  * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+//  * .----------------------------------------------------------        ----------------------------------------------------------.
+//  */
+//                         bindings = <
+// &trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+// &trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+// &trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+// &trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+//             >;
+//         };
+
+//         cd {  // 13
+// /* Bluetooth
+//  * .-----------------------------------------------                                    -----------------------------------------------.
+//  * | BT Clear |       |      |      |      |      |                                    |  BT 1 | BT 2 | BT 3 | BT 4 | BT 5 |          |
+//  * |----------+-------+------+------+------+------+                                    +-------+------+------+------+------+----------|
+//  * |          |       |      |TGL OS|      |      |                                    |       |      |      |      |      |          |
+//  * |----------+-------+------+------+------+------+                                    +-------+------+------+------+------+----------|
+//  * |          |       |      |      | BT PREV | BT NEXT |                              |       |      |      |      |      |          |
+//  * |----------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+----------|
+//  * |          |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |          |
+//  * .-------------------------------------------------------------        -------------------------------------------------------------.
+//  */
+//                         bindings = <
+// &bt BT_CLR &none        &none        &none           &none        &none                                         &pair_lin    &pair_mac    &bt BT_SEL 2 &bt BT_SEL 3       &bt BT_SEL 4      &none
+// &trans     &none        &tog 1       &metaset 0      &metaset 1   &none                                         &none        &none        &none        &none              &none             &none
+// &trans     &none        &none        &none           &bt BT_PRV   &bt BT_NXT  &trans                 &trans     &none        &none        &none        &ext_power EP_OFF  &ext_power EP_ON  &none
+// &trans     &trans       &trans       &trans          &trans       &trans      &trans                 &trans     &trans       &trans       &trans       &trans             &trans            &trans
+//             >;
+//         };
+
+//         acd {  // 14
+// /* ?
+//  * .--------------------------------------------                                    --------------------------------------------.
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+//  * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+//  * .----------------------------------------------------------        ----------------------------------------------------------.
+//  */
+//                         bindings = <
+// &trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+// &trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+// &trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+// &trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+//             >;
+//         };
+
+//         bcd {  // 15
+// /* Symbols
+//  * .--------------------------------------------                                    --------------------------------------------.
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+//  * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+//  * .----------------------------------------------------------        ----------------------------------------------------------.
+//  */
+//                         bindings = <
+// &trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+// &trans    &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+// &trans    &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+// &trans    &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+//             >;
+//         };
+
+//         abcd {  // 16
+// /* Symbols
+//  * .--------------------------------------------                                    --------------------------------------------.
+//  * |BOOTLDR|       |      |      |      | RESET|                                    | RESET |      |      |      |      |BOOTLDR|
+//  * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+                                    +-------+------+------+------+------+-------|
+//  * |       |       |      |      |      |      |                                    |       |      |      |      |      |       |
+//  * |-------+-------+------+------+------+------+------+------+        -------+------+-------+------+------+------+------+-------|
+//  * |       |       |      | L8_D | L2_B |      | L1_A | L4_C |        | L8_D | L2_B |       | L1_A | L4_C |      |      |       |
+//  * .----------------------------------------------------------        ----------------------------------------------------------.
+//  */
+//                         bindings = <
+// &bootloader &none        &none        &none        &none        &sys_reset                                    &sys_reset   &none        &none        &none        &none       &bootloader
+// &trans      &none        &none        &none        &none        &none                                         &none        &none        &none        &none        &none       &none
+// &trans      &none        &none        &none        &none        &none     &trans                 &trans       &none        &none        &none        &none        &none       &none
+// &trans      &trans       &trans       &trans       &trans       &trans    &trans                 &trans       &trans       &trans       &trans       &trans       &trans      &trans
+//             >;
+//         };
+//     };
 };
