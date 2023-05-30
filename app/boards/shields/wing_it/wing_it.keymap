@@ -176,7 +176,7 @@
         navigation {  // 1
 /* Navigation
     ┌────────┬─────────┬─────────┬─────────┬─────────┬─────────┐                                                    ┌────────┬─────────┬─────────┬─────────┬─────────┬────────┐
-    │        │ shift+` │backspace│   UP    │   DEL   │ctl/alt+K│                                                    │        │   HOME  │         │         │scrnshot │        │
+    │        │ shift+` │backspace│   UP    │   DEL   │ctl/alt+K│                                                    │        │   HOME  │   undo  │   redo  │scrnshot │        │
     ├────────┼─────────┼─────────┼─────────┼─────────┼─────────┤                                                    ├────────┼─────────┼─────────┼─────────┼─────────┼────────┤
     │        |shift+tab│   left  │  down   │  right  │ctl/alt+J|                                                    │        │   END   │ alt/cmd │ctrl/alt │         │        │
     ├────────┼─────────┼─────────┼─────────┼─────────┼─────────┤                                                    ├────────┼─────────┼─────────┼─────────┼─────────┼────────┤
@@ -186,10 +186,10 @@
                        └─────────┴─────────┴─────────┴─────────┘  └────────┘                            └────────┘  └────────┴─────────┴─────────┴─────────┘
  */
                         bindings = <
-&trans   &kp LS(GRAVE)  &kp BSPC           &kp UP             &kp DEL            &meta LC(K) LA(K)                                  &none   &kp HOME &none            &none            &meta PSCRN LC(LG(LS(N4)))  &trans
-&trans   &kp  LS(TAB)   &kp LEFT           &kp DOWN           &kp RIGHT          &meta LC(J) LA(J)                                  &none   &kp END  &meta LALT LGUI  &meta LCTL LALT  &kp LSHIFT                  &trans
-&trans   &none          &meta LC(X) LG(X)  &meta LC(C) LG(C)  &meta LC(V) LG(V)  &none               &trans                 &trans  &none   &none    &none            &none            &none                       &trans
-&trans   &trans         &trans             &trans             &trans             &trans              &trans                 &trans  &trans  &trans   &trans           &trans           &trans                      &trans
+&trans   &kp LS(GRAVE)  &kp BSPC           &kp UP             &kp DEL            &meta LC(K) LA(K)                                  &none   &kp HOME &meta LC(Z) LG(Z) &meta LC(Y) LG(Y) &meta PSCRN LC(LG(LS(N4)))  &trans
+&trans   &kp  LS(TAB)   &kp LEFT           &kp DOWN           &kp RIGHT          &meta LC(J) LA(J)                                  &none   &kp END  &meta LALT LGUI   &meta LCTL LALT   &kp LSHIFT                  &trans
+&trans   &none          &meta LC(X) LG(X)  &meta LC(C) LG(C)  &meta LC(V) LG(V)  &none               &trans                 &trans  &none   &none    &none             &none             &none                       &trans
+&trans   &trans         &trans             &trans             &trans             &trans              &trans                 &trans  &trans  &trans   &trans            &trans            &trans                      &trans
             >;
         };
 
