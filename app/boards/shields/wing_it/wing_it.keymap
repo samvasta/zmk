@@ -165,10 +165,10 @@
 
  */
                         bindings = <
-&kp  ESC        &tdQu            &kp  G       &kp  M            &kp  L    &kp  W                                               &kp  Y        &kp  F   &kp  U           &kp  B        &kp  SEMI       &kp  BSPC
+&kp  ESC        &kp Q            &kp  G       &kp  M            &kp  L    &kp  W                                               &kp  Y        &kp  F   &kp  U           &kp  B        &kp  SEMI       &kp  BSPC
 &kp  TAB        &kp  D           &kp  S       &kp  T            &kp  N    &kp  R                                               &kp  I        &kp  A   &kp  E           &kp  O        &kp  H          &kp  ENTER
 &meta LALT LCMD &kp  Z           &kp  X       &kp  C            &kp  V    &kp  J        &mo  5                     &mo  9      &kp  K        &kp  P   &kp  COMMA       &kp  DOT      &kp  SLASH      &meta RALT RCMD
-&kp  LCTRL      &meta LGUI LALT  &tdMediaSys  &meta LCTRL LCMD  &tdNumFn  &kp  LSHIFT   &tdNavSym                  &tdSymNav   &kp  SPACE    &tdFnNum &meta RCTRL RCMD &tdMediaSys   &meta RGUI RALT &kp  RCTRL
+&kp  LCTRL      &meta LGUI LALT  &tdMediaSys  &meta LCTRL LCMD  &tdNumFn  &kp  LSHIFT   &tdSymNav                  &tdNavSym   &kp  SPACE    &tdFnNum &meta RCTRL RCMD &tdMediaSys   &meta RGUI RALT &kp  RCTRL
             >;
         };
 
@@ -199,18 +199,18 @@
     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
     │        │    ^   │    &   │    %   │   !    │   (    │                                                    │   )    │   /    │   #    │   @    │   ~    │        │
     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │    .   │    |   │    *   │   +    │   {    │                                                    │   }    │   `    │   <    │   >    │   ?    │        │
+    │        │    .   │    |   │    *   │   +    │   {    │                                                    │   }    │   '    │   <    │   >    │   ?    │        │
     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │    $   │    _   │    -   │   =    │   [    │                                                    │   ]    │   \    │   :    │   "    │   ,    │        │
+    │        │    $   │    _   │    -   │   =    │   [    │                                                    │   ]    │   \    │   :    │   `    │   ,    │        │
     └────────┴────────┼────────┼────────┼────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼────────┼────────┼────────┼────────┴────────┘
                       │        │        │        │        │  │        │                            │        │  │        │        │        │        │
                       └────────┴────────┴────────┴────────┘  └────────┘                            └────────┘  └────────┴────────┴────────┴────────┘
  */
                         bindings = <
-&trans   &kp CARET  &kp AMPS   &kp PERCENT  &kp EXCL   &kp LPAR                                 &kp RPAR  &kp SLASH  &kp POUND  &kp AT     &kp TILDE  &trans
-&trans   &kp DOT    &kp PIPE   &kp ASTRK    &kp PLUS   &kp LBRC                                 &kp RBRC  &kp GRAVE  &kp LT     &kp GT     &kp QMARK  &trans
-&trans   &kp DOLLAR &kp UNDER  &kp MINUS    &kp EQUAL  &kp LBKT  &trans                 &trans  &kp RBKT  &kp BSLH   &kp COLON  &kp QUOT   &kp COMMA  &trans
-&trans   &trans     &trans     &trans       &trans     &trans    &trans                 &trans  &trans    &trans     &trans     &trans     &trans     &trans
+&trans   &kp CARET  &kp AMPS   &kp PERCENT  &kp EXCL   &kp LPAR                                     &kp RPAR  &kp SLASH  &kp POUND  &kp AT     &kp TILDE  &trans
+&trans   &kp DOT    &kp PIPE   &kp ASTRK    &kp PLUS   &kp LBRC                                     &kp RBRC  &kp QUOT   &kp LT     &kp GT     &kp QMARK  &trans
+&trans   &kp DOLLAR &kp UNDER  &kp MINUS    &kp EQUAL  &kp LBKT  &trans                 &trans      &kp RBKT  &kp BSLH   &kp COLON  &kp GRAVE  &kp COMMA  &trans
+&trans   &trans     &trans     &trans       &trans     &trans    &trans                 &kp LSHIFT  &trans    &trans     &trans     &trans     &trans     &trans
             >;
         };
 
