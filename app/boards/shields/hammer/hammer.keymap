@@ -82,6 +82,15 @@
             tapping-term-ms = <500>;
             bindings = <&mo 5>, <&mo 6>;    //hold = media, tap+hold = system
         };
+        
+        // tap dance mods
+        td_mod: tap_dance_mod_tap {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_MOD_TAP";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&meta LCTL LGUI>, <&meta LALT LCTL>, <&meta LGUI LALT>;
+        };
 
         // home row mods
          lh_hrm_0: lh_hrm_0 {
@@ -196,11 +205,11 @@
 
  */
                         bindings = <
-&kp  ESC         &kp Q       &kp  G         &kp  M            &kp  L        &kp  W                                               &kp  Y        &kp  F        &kp  U           &kp  B         &kp  SEMI       &kp  BSPC
+&kp  ESC         &kp Q       &kp  G           &kp  M            &kp  L        &kp  W                                               &kp  Y        &kp  F        &kp  U           &kp  B         &kp  SEMI       &kp  BSPC
 /* &kp  TAB         &kp D       &lh_hrm_0 0 S  &lh_hrm_1 0 T     &lh_hrm_2 0 N &kp  R                                               &kp  I        &rh_hrm_2 0 A &rh_hrm_1 0 E    &rh_hrm_0 0 O  &kp  H          &kp  ENTER */
-&kp  TAB         &kp D       &kp S  &kp T     &kp N &kp  R                                               &kp  I        &kp A &kp E    &kp O  &kp  H          &kp  ENTER
-&meta LCTRL LCMD &kp Z       &kp  X         &kp  C            &kp  V        &kp  J                                               &kp  K        &kp  P        &kp  COMMA       &kp  DOT       &kp  SLASH      &meta RCTRL RCMD
-                             &tdMediaSys    &meta LCTRL LCMD  &tdNumFn      &kp  LSHIFT   &tdSymNav                  &tdNavSym   &kp  SPACE    &tdFnNum      &meta RCTRL RCMD &tdMediaSys
+&kp  TAB         &kp D       &kp S            &kp T             &kp N         &kp  R                                               &kp  I        &kp A         &kp E            &kp O          &kp  H          &kp  ENTER
+&td_mod          &kp Z       &kp X            &kp  C            &kp  V        &kp  J                                               &kp  K        &kp  P        &kp  COMMA       &kp  DOT       &kp  SLASH      &td_mod
+                             &tdMediaSys      &meta LCTRL LCMD  &tdNumFn      &kp  LSHIFT   &tdSymNav                  &tdNavSym   &kp  SPACE    &tdFnNum      &meta RCTRL RCMD &tdMediaSys
             >;
         };
 
@@ -239,8 +248,8 @@
  */
                         bindings = <
 &trans   &kp AMPS   &kp LPAR   &kp LBRC     &kp LBKT   &kp PERCENT                                  &kp AT     &kp RBKT   &kp RBRC   &kp RPAR   &kp COLON  &trans
-&trans   &kp DOT    &kp PIPE   &kp ASTRK    &kp PLUS   &kp EXCL                                     &kp GRAVE  &kp QUOT   &kp LT     &kp GT     &kp QMARK  &trans
-&trans   &kp DOLLAR &kp UNDER  &kp MINUS    &kp EQUAL  &kp CARET                                    &kp POUND  &kp DQT    &kp TILDE  &kp BSLH   &kp SLASH  &trans
+&trans   &kp DOT    &kp PIPE   &kp ASTRK    &kp PLUS   &kp EXCL                                     &kp POUND  &kp DQT    &kp LT     &kp GT     &kp QMARK  &trans
+&trans   &kp DOLLAR &kp UNDER  &kp MINUS    &kp EQUAL  &kp CARET                                    &kp TILDE  &kp QUOT   &kp GRAVE  &kp BSLH   &kp SLASH  &trans
                     &none      &none        &none      &none      &none                  &kp LSHIFT &trans     &none      &none      &none 
             >;
         };
