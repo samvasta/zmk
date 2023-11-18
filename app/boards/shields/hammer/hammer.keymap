@@ -13,6 +13,14 @@
 
 
 / {
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        doubleThumbs {     // 2 thumbs = numbers
+            if-layers = <1 2>;
+            then-layer = <4>;
+        };
+    };
+
      macros {
         pair_mac: pair_mac {
             label = "Pair_Mac";
@@ -200,8 +208,8 @@
  */
                         bindings = <
 &kp  ESC         &kp Q       &kp  G           &kp  M            &kp  L        &kp  W                                               &kp  Y        &kp  F        &kp  U           &kp  B         &kp  SEMI       &kp  BSPC
-&kp  TAB         &kp D       &lh_hrm_0 0 S  &lh_hrm_1 0 T     &lh_hrm_2 0 N &kp  R                                               &kp  I        &rh_hrm_2 0 A &rh_hrm_1 0 E    &rh_hrm_0 0 O  &kp  H          &kp  ENTER
-/* &kp  TAB         &kp D       &kp S            &kp T             &kp N         &kp  R                                               &kp  I        &kp A         &kp E            &kp O          &kp  H          &kp  ENTER */
+/* &kp  TAB         &kp D       &lh_hrm_0 0 S  &lh_hrm_1 0 T     &lh_hrm_2 0 N &kp  R                                               &kp  I        &rh_hrm_2 0 A &rh_hrm_1 0 E    &rh_hrm_0 0 O  &kp  H          &kp  ENTER */
+&kp  TAB         &kp D       &kp S            &kp T             &kp N         &kp  R                                               &kp  I        &kp A         &kp E            &kp O          &kp  H          &kp  ENTER
 &td_mod          &kp Z       &kp X            &kp  C            &kp  V        &kp  J                                               &kp  K        &kp  P        &kp  COMMA       &kp  DOT       &kp  SLASH      &td_mod
                              &tdMediaSys      &meta LALT LCMD   &tdNumFn      &kp  LSHIFT   &tdSymNav                  &tdNavSym   &kp  SPACE    &tdFnNum      &meta RALT RCMD  &tdMediaSys
             >;
@@ -223,7 +231,7 @@
 &trans   &kp LS(GRAVE)  &kp BSPC           &kp UP             &kp DEL            &meta LC(K) LA(K)                                  &none   &kp HOME &meta LC(Z) LG(Z) &meta LC(Y) LG(Y) &meta PSCRN LC(LG(LS(N4)))  &trans
 &trans   &kp  LS(TAB)   &kp LEFT           &kp DOWN           &kp RIGHT          &meta LC(J) LA(J)                                  &none   &kp END  &meta LALT LGUI   &meta LCTL LALT   &kp LSHIFT                  &trans
 &trans   &none          &meta LC(X) LG(X)  &meta LC(C) LG(C)  &meta LC(V) LG(V)  &none                                              &none   &none    &none             &none             &none                       &trans
-                        &none              &none              &none              &none               &none                  &none   &trans  &none    &none             &none 
+                        &none              &none              &trans             &trans              &trans                 &trans  &trans  &none    &none             &none 
             >;
         };
 
@@ -244,7 +252,7 @@
 &trans   &kp AMPS   &kp LPAR   &kp LBRC     &kp LBKT   &kp PERCENT                                  &kp AT     &kp RBKT   &kp RBRC   &kp RPAR   &kp COLON  &trans
 &trans   &kp DOT    &kp PIPE   &kp ASTRK    &kp PLUS   &kp EXCL                                     &kp POUND  &kp DQT    &kp LT     &kp GT     &kp QMARK  &trans
 &trans   &kp DOLLAR &kp UNDER  &kp MINUS    &kp EQUAL  &kp CARET                                    &kp TILDE  &kp QUOT   &kp GRAVE  &kp BSLH   &kp SLASH  &trans
-                    &none      &none        &none      &none      &none                  &kp LSHIFT &trans     &none      &none      &none 
+                    &none      &none        &trans     &trans     &trans                    &trans  &trans     &trans     &none      &none 
             >;
         };
 
@@ -266,7 +274,7 @@
 &trans    &kp F1   &kp F2    &kp F3   &kp F4   &none                                         &none        &kp F1  &kp F2   &kp F3    &kp F4   &none
 &trans    &kp F5   &kp F6    &kp F7   &kp F8   &none                                         &none        &kp F5  &kp F6   &kp F7    &kp F8   &none
 &trans    &kp F9   &kp F10   &kp F11  &kp F12  &none                                         &none        &kp F9  &kp F10  &kp F11   &kp F12  &none
-                   &none     &none    &none    &none     &none                  &none        &trans       &none   &none    &none 
+                   &none     &none    &trans   &trans    &trans                 &trans       &trans       &trans  &none    &none 
            >;
         };
 
@@ -288,7 +296,7 @@
 &trans   &kp AMPS   &kp LPAR   &kp LBRC     &kp LBKT   &kp PERCENT                           &kp N0     &kp N1   &kp N2   &kp N3   &kp N4   &kp N5
 &trans   &kp DOT    &kp PIPE   &kp ASTRK    &kp PLUS   &kp EXCL                              &kp X      &kp N6   &kp N7   &kp N8   &kp N9   &kp A
 &trans   &kp DOLLAR &kp UNDER  &kp MINUS    &kp EQUAL  &kp CARET                             &kp POUND  &kp B    &kp C    &kp D    &kp E    &kp F
-                    &none      &none        &none      &none      &none              &none   &trans     &none    &none    &none 
+                    &none      &none        &trans     &trans     &trans             &trans  &trans     &trans   &none    &none 
             >;
         };
 
@@ -309,7 +317,7 @@
 &kp C_VOL_DN  &kp C_VOL_UP &none   &none   &none   &none                                         &none   &none   &none   &none   &kp C_VOL_DN  &kp C_VOL_UP
 &kp C_MUTE    &kp C_PP     &none   &none   &none   &none                                         &none   &none   &none   &none   &kp C_MUTE    &kp C_PP
 &kp C_PREV    &kp C_NEXT   &none   &none   &none   &none                                         &none   &none   &none   &none   &kp C_PREV    &kp C_NEXT
-                           &none   &none   &none   &none     &none                       &none   &trans  &none   &none    &none 
+                           &none   &none   &none   &none     &none                       &none   &none   &none   &none    &none 
             >;
         };
 
@@ -331,7 +339,7 @@
 &bt BT_CLR &none        &none        &none           &none        &none                                         &pair_lin    &pair_mac    &bt BT_SEL 2 &bt BT_SEL 3   &bt BT_SEL 4    &none
 &trans     &none        &tog 1       &metaset 0      &metaset 1   &none                                         &none        &none        &none        &none          &none           &none
 &trans     &none        &none        &none           &none        &none                                         &none        &none        &none        &none          &none           &none
-                        &none        &none           &none        &none       &none                  &none      &trans       &none        &none        &none 
+                        &none        &none           &none        &none       &none                  &none      &none        &none        &none        &none 
             >;
         };
     };
