@@ -16,8 +16,8 @@
     conditional_layers {
         compatible = "zmk,conditional-layers";
         doubleThumbs {     // 2 thumbs = numbers
-            if-layers = <1 2>;
-            then-layer = <4>;
+            if-layers = <2 3>;
+            then-layer = <5>;
         };
     };
 
@@ -60,35 +60,35 @@
             label = "TAP_DANCE_NAV_SYM";
             #binding-cells = <0>;
             tapping-term-ms = <500>;
-            bindings = <&mo 1>, <&mo 2>;    //hold = navigation, tap+hold = symbols
+            bindings = <&mo 2>, <&mo 3>;    //hold = navigation, tap+hold = symbols
         };
         tdSymNav: tap_dance_sym_nav {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_SYM_NAV";
             #binding-cells = <0>;
             tapping-term-ms = <500>;
-            bindings = <&mo 2>, <&mo 1>;    //hold = symbols, tap+hold = navigation
+            bindings = <&mo 3>, <&mo 2>;    //hold = symbols, tap+hold = navigation
         };
         tdFnNum: tap_dance_fn_num {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_FN_NUM";
             #binding-cells = <0>;
             tapping-term-ms = <500>;
-            bindings = <&mo 3>, <&mo 4>;    //hold = functions, tap+hold = numbers
+            bindings = <&mo 4>, <&mo 5>;    //hold = functions, tap+hold = numbers
         };
         tdNumFn: tap_dance_num_fn {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_NUM_FN";
             #binding-cells = <0>;
             tapping-term-ms = <500>;
-            bindings = <&mo 4>, <&mo 3>;    //hold = numbers, tap+hold = functions
+            bindings = <&mo 5>, <&mo 4>;    //hold = numbers, tap+hold = functions
         };
         tdMediaSys: tap_dance_media_sys {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_MEDIA_SYS";
             #binding-cells = <0>;
             tapping-term-ms = <500>;
-            bindings = <&mo 5>, <&mo 6>;    //hold = media, tap+hold = system
+            bindings = <&mo 6>, <&mo 7>;    //hold = media, tap+hold = system
         };
         
         // tap dance mods
@@ -99,98 +99,30 @@
             tapping-term-ms = <200>;
             bindings = <&meta LCTL LGUI>, <&meta LALT LCTL>, <&meta LGUI LALT>;
         };
-
-        // home row mods
-         lh_hrm_0: lh_hrm_0 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "lh_hrm_0";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <HRM_TAPPING_TERM_MS>;                        // <---[[produces tap if held longer than tapping-term-ms]]
-            quick-tap-ms = <HRM_QUICK_TAP_MS>;
-            bindings = <&gui_alt>, <&kp>;
-            hold-trigger-key-positions = RIGHT_HAND_KEYS;
-            global-quick-tap;
-        };
-         lh_hrm_1: lh_hrm_1 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "lh_hrm_1";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <HRM_TAPPING_TERM_MS>;                        // <---[[produces tap if held longer than tapping-term-ms]]
-            quick-tap-ms = <HRM_QUICK_TAP_MS>;
-            bindings = <&ctrl_gui>, <&kp>;
-            hold-trigger-key-positions = RIGHT_HAND_KEYS;
-            global-quick-tap;
-        };
-         lh_hrm_2: lh_hrm_2 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "lh_hrm_2";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <HRM_TAPPING_TERM_MS>;                        // <---[[produces tap if held longer than tapping-term-ms]]
-            quick-tap-ms = <HRM_QUICK_TAP_MS>;
-            bindings = <&alt_ctrl>, <&kp>;
-            hold-trigger-key-positions = RIGHT_HAND_KEYS;
-            global-quick-tap;
-        };
-        rh_hrm_0: rh_hrm_0 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "rh_hrm_0";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <HRM_TAPPING_TERM_MS>;                        // <---[[produces tap if held longer than tapping-term-ms]]
-            quick-tap-ms = <HRM_QUICK_TAP_MS>;
-            bindings = <&gui_alt>, <&kp>;
-            hold-trigger-key-positions = LEFT_HAND_KEYS;
-            global-quick-tap;
-        };
-        rh_hrm_1: rh_hrm_1 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "rh_hrm_1";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <HRM_TAPPING_TERM_MS>;                        // <---[[produces tap if held longer than tapping-term-ms]]
-            quick-tap-ms = <HRM_QUICK_TAP_MS>;
-            bindings = <&ctrl_gui>, <&kp>;
-            hold-trigger-key-positions = LEFT_HAND_KEYS;
-            global-quick-tap;
-        };
-        rh_hrm_2: rh_hrm_2 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "rh_hrm_2";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <HRM_TAPPING_TERM_MS>;                        // <---[[produces tap if held longer than tapping-term-ms]]
-            quick-tap-ms = <HRM_QUICK_TAP_MS>;
-            bindings = <&alt_ctrl>, <&kp>;
-            hold-trigger-key-positions = LEFT_HAND_KEYS;
-            global-quick-tap;
-        };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-//         sturdy {
-// /* STURDY (modified)
-//     ┌────────┬─────────┬─────────┬─────────┬─────────┬────────┐                                                    ┌────────┬─────────┬─────────┬─────────┬─────────┬────────┐
-//     │  ESC   │    Z    │    M    │    L    │    C    │   P    │                                                    │    X   │    F    │    O    │    U    │    J    │ BKSPC  │
-//     ├────────┼─────────┼─────────┼─────────┼─────────┼────────┤                                                    ├────────┼─────────┼─────────┼─────────┼─────────┼────────┤
-//     │  TAB   │    S    │gui/alt/T│ctl/gui/R│alt/ctl/D│   Y    |                                                    │    .   │alt/ctl/N│ctl/gui/A│gui/alt/E│    I    │ ENTER  │
-//     ├────────┼─────────┼─────────┼─────────┼─────────┼────────┤                                                    ├────────┼─────────┼─────────┼─────────┼─────────┼────────┤
-//     │ctrl/cmd│    V    │    K    │  QU/Q   │    G    │   W    │                                                    │    B   │    H    │    ;    │    '    │    ,    │ctrl/cmd│
-//     └────────┴─────────┼─────────┼─────────┼─────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼─────────┼─────────┼─────────┼─────────┴────────┘
-//                        │Media/Sys│ctrl/cmd │Func/num │  Shift │  │Nav./sym│                            │Sym/nav.│  │  Space │Num/func │ctrl/cmd |Media/sys│
-//                        └─────────┴─────────┴─────────┴────────┘  └────────┘                            └────────┘  └────────┴─────────┴─────────┴─────────┘
-//  */
-//                         bindings = <
-// &kp  ESC         &kp  Z    &kp  M       &kp  L             &kp  C   &kp  P                                              &kp  X        &kp  F   &kp  O           &kp  U     &kp  J       &kp  BSPC
-// &kp  TAB         &kp  S    &kp  T       &kp  R             &kp  D   &kp  Y                                              &kp  DOT      &kp  N   &kp  A           &kp  E     &kp  I       &kp  ENTER
-// &meta LCTRL LCMD &kp  V    &kp  K       &tdQu              &kp  G   &kp  W                                              &kp  B        &kp  H   &kp  SEMI        &kp  APOS  &kp  COMMA   &meta RCTRL RCMD
-//                            &tdMediaSys  &meta LCTRL LCMD   &tdFnNum &kp  LSHIFT   &tdNavSym                 &tdSymNav   &kp  SPACE    &tdNumFn &meta RCTRL RCMD &tdMediaSys
-//             >;
-//         };
+        galliumv2 {
+/* gallium v2
+    ┌────────┬─────────┬─────────┬─────────┬─────────┬────────┐                                                    ┌────────┬─────────┬─────────┬─────────┬─────────┬────────┐
+    │  ESC   │    B    │    L    │    D    │    C    │   V    │                                                    │    J   │    F    │    O    │    U    │    ,    │ BKSPC  │
+    ├────────┼─────────┼─────────┼─────────┼─────────┼────────┤                                                    ├────────┼─────────┼─────────┼─────────┼─────────┼────────┤
+    │  TAB   │    N    │    R    │    T    │    S    │   G    |                                                    │    Y   │    H    │    A    │    E    │    I    │ ENTER  │
+    ├────────┼─────────┼─────────┼─────────┼─────────┼────────┤                                                    ├────────┼─────────┼─────────┼─────────┼─────────┼────────┤
+    │ctrl/cmd│    X    │    Q    │    M    │    W    │   Z    │                                                    │    K   │    P    │    .    │    '    │    ;    │ctrl/cmd│
+    └────────┴─────────┼─────────┼─────────┼─────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼─────────┼─────────┼─────────┼─────────┴────────┘
+                       │Media/Sys│ctrl/cmd │Func/num │  Shift │  │Nav./sym│                            │Sym/nav.│  │  Space │Num/func │ctrl/cmd |Media/sys│
+                       └─────────┴─────────┴─────────┴────────┘  └────────┘                            └────────┘  └────────┴─────────┴─────────┴─────────┘
+ */
+                        bindings = <
+&kp  ESC         &kp  B    &kp  L       &kp  D             &kp  C   &kp  V                                              &kp  J        &kp  F   &kp  O           &kp  U     &kp  COMMA   &kp  BSPC
+&kp  TAB         &kp  N    &kp  R       &kp  T             &kp  S   &kp  G                                              &kp  Y        &kp  H   &kp  A           &kp  E     &kp  I       &kp  ENTER
+&meta LCTRL LCMD &kp  X    &kp  Q       &kp  M             &kp  W   &kp  Z                                              &kp  K        &kp  P   &kp  DOT         &kp  APOS  &kp  SEMI    &meta RCTRL RCMD
+                           &tdMediaSys  &meta LALT LCMD    &tdNumFn &kp  LSHIFT   &tdSymNav                  &tdNavSym  &kp  SPACE    &tdFnNum &meta RALT RCMD  &tdMediaSys
+            >;
+        };
 
         default_layer {
 /* Carpalx QGMLWY
@@ -208,7 +140,6 @@
  */
                         bindings = <
 &kp  ESC         &kp Q       &kp  G           &kp  M            &kp  L        &kp  W                                               &kp  Y        &kp  F        &kp  U           &kp  B         &kp  SEMI       &kp  BSPC
-/* &kp  TAB         &kp D       &lh_hrm_0 0 S  &lh_hrm_1 0 T     &lh_hrm_2 0 N &kp  R                                               &kp  I        &rh_hrm_2 0 A &rh_hrm_1 0 E    &rh_hrm_0 0 O  &kp  H          &kp  ENTER */
 &kp  TAB         &kp D       &kp S            &kp T             &kp N         &kp  R                                               &kp  I        &kp A         &kp E            &kp O          &kp  H          &kp  ENTER
 &td_mod          &kp Z       &kp X            &kp  C            &kp  V        &kp  J                                               &kp  K        &kp  P        &kp  COMMA       &kp  DOT       &kp  SLASH      &td_mod
                              &tdMediaSys      &meta LALT LCMD   &tdNumFn      &kp  LSHIFT   &tdSymNav                  &tdNavSym   &kp  SPACE    &tdFnNum      &meta RALT RCMD  &tdMediaSys
@@ -239,20 +170,20 @@
 /* Symbols
     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-    │        │    &   │    (   │    {   │   [    │   %    │                                                    │   @    │   ]    │   }    │   )    │   :    │        │
+    │        │    (   │    )   │   {    │   &    │        │                                                    │   @    │   %    │   [    │   ]    │   :    │        │
     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │    .   │    |   │    *   │   +    │   !    │                                                    │   `    │   '    │   <    │   >    │   ?    │        │
+    │        │    .   │    |   │    *   │   +    │   !    │                                                    │   #    │   "    │   <    │   >    │   ?    │        │
     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │    $   │    _   │    -   │   =    │   ^    │                                                    │   #    │   "    │   ~    │   \    │   /    │        │
+    │        │    $   │    _   │    -   │   =    │   ^    │                                                    │   ~    │   '    │   `    │   \    │   /    │        │
     └────────┴────────┼────────┼────────┼────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼────────┼────────┼────────┼────────┴────────┘
                       │        │        │        │        │  │        │                            │        │  │        │        │        │        │
                       └────────┴────────┴────────┴────────┘  └────────┘                            └────────┘  └────────┴────────┴────────┴────────┘
  */
                         bindings = <
-&trans   &kp AMPS   &kp LPAR   &kp LBRC     &kp LBKT   &kp PERCENT                                  &kp AT     &kp RBKT   &kp RBRC   &kp RPAR   &kp COLON  &trans
-&trans   &kp DOT    &kp PIPE   &kp ASTRK    &kp PLUS   &kp EXCL                                     &kp POUND  &kp DQT    &kp LT     &kp GT     &kp QMARK  &trans
-&trans   &kp DOLLAR &kp UNDER  &kp MINUS    &kp EQUAL  &kp CARET                                    &kp TILDE  &kp QUOT   &kp GRAVE  &kp BSLH   &kp SLASH  &trans
-                    &none      &none        &trans     &trans     &trans                    &trans  &trans     &trans     &none      &none 
+&trans   &kp LPAR   &kp RPAR     &kp LBKT   &kp RBKT   &kp AMPS                                     &kp AT     &kp PERCENT &kp LBRC   &kp RBRC   &kp COLON  &trans
+&trans   &kp DOT    &kp UNDER  &kp ASTRK    &kp PLUS   &kp EXCL                                     &kp POUND  &kp DQT     &kp LT     &kp GT     &kp QMARK  &trans
+&trans   &kp DOLLAR &kp PIPE   &kp MINUS    &kp EQUAL  &kp CARET                                    &kp TILDE  &kp QUOT    &kp GRAVE  &kp BSLH   &kp SLASH  &trans
+                    &none      &none        &trans     &trans     &trans                    &trans  &trans     &trans      &none      &none 
             >;
         };
 
