@@ -180,9 +180,9 @@
                       └────────┴────────┴────────┴────────┘  └────────┘                            └────────┘  └────────┴────────┴────────┴────────┘
  */
                         bindings = <
-&trans   &kp LPAR   &kp RPAR     &kp LBKT   &kp RBKT   &kp AMPS                                     &kp AT     &kp PERCENT &kp LBRC   &kp RBRC   &kp COLON  &trans
-&trans   &kp DOT    &kp UNDER  &kp ASTRK    &kp PLUS   &kp EXCL                                     &kp POUND  &kp DQT     &kp LT     &kp GT     &kp QMARK  &trans
-&trans   &kp DOLLAR &kp PIPE   &kp MINUS    &kp EQUAL  &kp CARET                                    &kp TILDE  &kp QUOT    &kp GRAVE  &kp BSLH   &kp SLASH  &trans
+&trans   &kp AMPS   &kp LPAR   &kp RPAR     &kp LBKT   &kp RBKT                                     &kp AT     &kp LBRC   &kp RBRC   &kp PERCENT &kp COLON  &trans
+&trans   &kp DOT    &kp UNDER  &kp ASTRK    &kp PLUS   &kp EXCL                                     &kp POUND  &kp DQT    &kp LT     &kp GT      &kp QMARK  &trans
+&trans   &kp DOLLAR &kp PIPE   &kp MINUS    &kp EQUAL  &kp CARET                                    &kp TILDE  &kp QUOT   &kp GRAVE  &kp BSLH    &kp SLASH  &trans
                     &none      &none        &trans     &trans     &trans                    &trans  &trans     &trans      &none      &none 
             >;
         };
