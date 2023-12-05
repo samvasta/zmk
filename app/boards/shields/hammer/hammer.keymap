@@ -17,11 +17,7 @@
         compatible = "zmk,conditional-layers";
         doubleThumbs {     // 2 thumbs = numbers
             if-layers = <2 3>;
-            then-layer = <5>;
-        };
-        numsOverride {     // 2 thumbs = numbers
-            if-layers = <5>;
-            then-layer = <5>;
+            then-layer = <8>;
         };
     };
 
@@ -174,20 +170,20 @@
 /* Symbols
     Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
     ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
-    │        │    <   │    >   │   ^    │   :    │   &    │                                                    │   %    │   `    │   $    │   [    │   ]    │        │
+    │        │    ^   │    \   │   *    │   :    │   &    │                                                    │   `    │   $    │   [    │   ]    │   %    │        │
     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │    !   │    -   │    +   │   =    │   |    │                                                    │   '    │   (    │   )    │   {    │   }    │        │
+    │        │    !   │    -   │    +   │   =    │   |    │                                                    │   "    │   (    │   {    │   }    │   )    │        │
     ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
-    │        │    ~   │    #   │    \   │   *    │   @    │                                                    │   ;    │   ?    │   .    │   /    │   _    │        │
+    │        │    ~   │    #   │    <   │   >    │   @    │                                                    │   '    │   ?    │   .    │   /    │   _    │        │
     └────────┴────────┼────────┼────────┼────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼────────┼────────┼────────┼────────┴────────┘
                       │        │        │        │        │  │        │                            │        │  │        │        │        │        │
                       └────────┴────────┴────────┴────────┘  └────────┘                            └────────┘  └────────┴────────┴────────┴────────┘
  */
                         bindings = <
-&trans   &kp LT    &kp GT     &kp CARET  &kp COLON  &kp AMPS                                     &kp PERCENT  &kp LBRC   &kp RBRC  &kp PERCENT &kp COLON  &trans
-&trans   &kp EXCL  &kp MINUS  &kp PLUS   &kp EQUAL  &kp PIPE                                     &kp QUOT     &kp DQT    &kp LT    &kp GT      &kp QMARK  &trans
-&trans   &kp TILDE &kp POUND  &kp BSLH   &kp ASTRK  &kp AT                                       &kp SEMI     &kp QMARK  &kp DOT   &kp SLASH   &kp UNDER  &trans
-                   &none      &none      &trans     &trans     &trans                    &trans  &trans       &trans     &none     &none 
+&trans   &kp CARET &kp BSLH   &kp ASTRK  &kp COLON  &kp AMPS                                     &kp GRAVE    &kp DOLLAR &kp LBKT   &kp RBKT   &kp PERCENT  &trans
+&trans   &kp EXCL  &kp MINUS  &kp PLUS   &kp EQUAL  &kp PIPE                                     &kp DQT      &kp LPAR   &kp LBRC   &kp RBRC   &kp RPAR     &trans
+&trans   &kp TILDE &kp POUND  &kp LT     &kp GT     &kp AT                                       &kp QUOT     &kp QMARK  &kp DOT    &kp SLASH  &kp UNDER    &trans
+                   &none      &none      &trans     &trans     &trans                    &trans  &trans       &trans     &none      &none 
             >;
         };
 
@@ -275,6 +271,27 @@
 &trans     &none        &tog 1       &metaset 0      &metaset 1   &none                                         &none        &none        &none        &none          &none           &none
 &trans     &none        &none        &none           &none        &none                                         &none        &none        &none        &none          &none           &none
                         &none        &none           &none        &none       &none                  &none      &none        &none        &none        &none 
+            >;
+        };
+        numbers2 {  // 4
+/* ? / Numpad
+    Left Hand                                                 L. Thumb                              R. Thumb    Right Hand
+    ┌────────┬────────┬────────┬────────┬────────┬────────┐                                                    ┌────────┬────────┬────────┬────────┬────────┬────────┐
+    │        │    <   │    >   │   ^    │   :    │   &    │                                                    │ NUM 0  │ NUM 1  │ NUM 2  │ NUM 3  │ NUM 4  │ NUM 5  │
+    ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+    │        │    !   │    -   │    +   │   =    │   |    │                                                    │    .   │ NUM 6  │ NUM 7  │ NUM 8  │ NUM 9  │        │
+    ├────────┼────────┼────────┼────────┼────────┼────────┤                                                    ├────────┼────────┼────────┼────────┼────────┼────────┤
+    │        │    ~   │    #   │    \   │   *    │   @    │                                                    │    $   │        │        │        │        │        │
+    └────────┴────────┼────────┼────────┼────────┼────────┤  ┌────────┐                            ┌────────┐  ├────────┼────────┼────────┼────────┼────────┴────────┘
+                      │        │        │        │        │  │        │                            │        │  │        │        │        │        │
+                      └────────┴────────┴────────┴────────┘  └────────┘                            └────────┘  └────────┴────────┴────────┴────────┘
+
+ */
+                        bindings = <
+&trans   &kp LT    &kp GT     &kp CARET  &kp COLON  &kp AMPS                                 &kp N0     &kp N1   &kp N2   &kp N3   &kp N4   &kp N5
+&trans   &kp EXCL  &kp MINUS  &kp PLUS   &kp EQUAL  &kp PIPE                                 &kp DOT    &kp N6   &kp N7   &kp N8   &kp N9   &none
+&trans   &kp TILDE &kp POUND  &kp BSLH   &kp ASTRK  &kp AT                                   &kp DOLLAR &none    &none    &none    &none    &none
+                    &none      &none        &trans     &trans     &trans             &trans  &trans     &trans   &none    &none 
             >;
         };
     };
