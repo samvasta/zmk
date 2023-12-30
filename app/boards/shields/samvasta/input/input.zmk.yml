@@ -1,0 +1,11 @@
+file_format: "1"
+id: input
+name: input
+type: shield
+url: https://github.com/samvasta/input
+requires: [pro_micro]
+features:
+  - keys
+siblings:
+  - input_left
+  - input_right
