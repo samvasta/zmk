@@ -1,0 +1,14 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/ {
+    behaviors {
+        /omit-if-no-ref/ multifn: behavior_multi_function {
+            compatible = "zmk,behavior-multi-function-set";
+            #binding-cells = <2>;
+        };
+    };
+};

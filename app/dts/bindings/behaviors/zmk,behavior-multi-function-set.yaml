@@ -1,0 +1,8 @@
+# Copyright (c) 2020 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+description: Multi Function behavior
+
+compatible: "zmk,behavior-multi-function-set"
+
+include: two_param.yaml

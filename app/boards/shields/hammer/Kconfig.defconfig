@@ -1,7 +1,7 @@
 if SHIELD_HAMMER_LEFT
 
 config ZMK_KEYBOARD_NAME
-    default "hammer"
+    default "hammer3"
 
 config ZMK_SPLIT_ROLE_CENTRAL
     default y

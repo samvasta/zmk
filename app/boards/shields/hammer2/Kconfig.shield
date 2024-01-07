@@ -1,0 +1,5 @@
+config SHIELD_HAMMER2_LEFT
+    def_bool $(shields_list_contains,hammer2_left)
+
+config SHIELD_HAMMER2_RIGHT
+    def_bool $(shields_list_contains,hammer2_right)

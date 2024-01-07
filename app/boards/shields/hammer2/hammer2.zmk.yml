@@ -1,0 +1,11 @@
+file_format: "1"
+id: hammer2
+name: hammer2
+type: shield
+url: https://github.com/samvasta/hammer
+requires: [pro_micro]
+features:
+  - keys
+siblings:
+  - hammer2_left
+  - hammer2_right

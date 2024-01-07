@@ -20,5 +20,4 @@
 #include <behaviors/backlight.dtsi>
 #include <behaviors/macros.dtsi>
 #include <behaviors/mouse_key_press.dtsi>
-
-#include <behaviors/meta_mod.dtsi>
+#include <behaviors/multi_function.dtsi>

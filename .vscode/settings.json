@@ -10,7 +10,12 @@
     "behavior.h": "c",
     "ble.h": "c",
     "behavior_queue.h": "c",
-    "errno.h": "c"
+    "errno.h": "c",
+    "devicetree.h": "c",
+    "meta.h": "c",
+    "profile.h": "c",
+    "addr.h": "c",
+    "types.h": "c"
   },
   "python.formatting.provider": "black",
   "cmake.sourceDirectory": "${workspaceFolder}/app",

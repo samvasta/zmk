@@ -5,6 +5,7 @@
  */
 
 #pragma once
+#include <zephyr/types.h>
 
-int zmk_meta_mode();
-int zmk_meta_set(uint8_t meta_value);
+int zmk_active_mode();
+int zmk_active_mode_set(uint8_t mode);
