@@ -28,5 +28,4 @@
 #include <behaviors/soft_off.dtsi>
 #include <behaviors/studio_unlock.dtsi>
 #include <behaviors/mouse_keys.dtsi>
-
-#include <behaviors/meta_mod.dtsi>
+#include <behaviors/multi_function.dtsi>

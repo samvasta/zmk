@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include "input.dtsi"
+#include "hammer2.dtsi"
 
 &default_transform {
     col-offset = <6>;
