@@ -290,7 +290,7 @@ LTHUMB            RTHUMB
 &kp  TAB  &kp D  &kp S  &kp T  &kp N  &kp R                                           &kp I  &kp A  &kp E      &kp O    &kp H      &kp ENTER
 &ctrl_gui &kp Z  &kp X  &kp C  &kp V  &kp J                                           &kp K  &kp P  &kp COMMA  &kp DOT  &kp SLASH  &ctrl_gui
                                             &ctrl_gui &kp LSHIFT  &kp SPACE  &kp RALT
-                                            &mo SYM   &mo NAV     &mo NAV    &mo SYM
+                                            &mo SYM   &mo NAV     &mo SYM    &mo NAV
             >;
         };
 
