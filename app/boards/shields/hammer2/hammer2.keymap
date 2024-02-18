@@ -281,7 +281,7 @@ LTHUMB            RTHUMB
 &trans   &kp N  &kp R  &kp T  &kp S   &kp G                                             &kp Y  &kp H   &kp A    &kp E      &kp I      &trans
 &trans   &kp X  &kp Q  &kp M  &kp W   &kp Z                                             &kp K  &kp P   &kp DOT  &kp COMMA  &kp SLASH  &trans
                                             &ctrl_gui &kp LSHIFT  &kp SPACE  &alt_ctrl
-                                            &mo NUM   &mo SYM     &mo NAV    &mo SLACK_REACT
+                                            &mo SYM   &mo NUM     &mo NAV    &mo SLACK_REACT
             >;
         };
         
