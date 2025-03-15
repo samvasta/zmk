@@ -1,0 +1,10 @@
+file_format: "1"
+id: wanderer
+name: wanderer
+type: shield
+url: https://github.com/samvasta/input
+requires: [pro_micro]
+features:
+  - keys
+siblings:
+  - wanderer

@@ -1,0 +1,12 @@
+if SHIELD_WANDERER
+
+config ZMK_KEYBOARD_NAME
+    default "keeb"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+config ZMK_SPLIT
+    default n
+
+endif

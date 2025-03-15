@@ -1,0 +1,2 @@
+config SHIELD_WANDERER
+    def_bool $(shields_list_contains,wanderer)
